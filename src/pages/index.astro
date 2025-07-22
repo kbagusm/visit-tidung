@@ -1,26 +1,49 @@
 ---
-import '../styles/global.css';
-// Component Imports
-// import Button from '../components/Button.astro';
-import { Button } from '@/components/ui/button';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import Navigation from '@/components/custom/Navigation';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Mouse } from 'lucide-react';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
+<BaseLayout pageTitle="Visit Tidung">
 
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
-	</body>
-</html>
+  <header class="relative w-full h-[calc(100vh-77px)] overflow-hidden">
+    <!-- Video Background -->
+    <div class="fixed top-0 left-0 w-full h-screen -z-10">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="w-full h-full object-cover"
+    >
+      <source src="/videos/videotron-overlay.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+    <!-- Content -->
+    <div class="relative z-20 text-primary-foreground h-full flex items-center">
+      <div class="md:ml-32 md:max-w-xl px-3 md:px-0 -mt-28">
+        <h1 class="text-6xl md:text-8xl font-[Karimun] text-center md:text-left">Pulau Tidung</h1>
+        <p class="text-lg -mt-3 text-center md:text-left">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quam
+          accusamus sint corrupti soluta eveniet sapiente iure.
+        </p>
+      </div>
+			<div class="absolute bottom-5 left-1/2 animate-bounce"><Mouse/></div>
+    </div>
+  </header>
+
+  <!-- Next Section -->
+  <section class="h-screen bg-white">
+    <div class="p-8 max-w-3xl mx-auto">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+        aspernatur, fuga modi non, placeat doloremque nostrum consequatur quas
+        sapiente eaque commodi corporis nobis, magni fugit vel sunt. Delectus
+        fugit quis quae doloremque quasi ullam dolor expedita atque voluptates
+        id. Iure et magni deserunt provident nulla dicta officia recusandae
+        necessitatibus itaque?
+      </p>
+    </div>
+  </section>
+</BaseLayout>
