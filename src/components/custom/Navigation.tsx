@@ -47,7 +47,7 @@ export default function Navigation() {
 
     // Add scroll event listener
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 100);
     };
 
     window.addEventListener('scroll', handleScroll);

@@ -23,14 +23,14 @@ import Navigation from './Navigation';
 </nav>
 
 <script is:inline>
-  // If window scroll Y is more than 20, add border to navbar
+  // If window scroll Y is more than 100, add border to navbar
   window.addEventListener('scroll', () => {
     const navbar = document.querySelector('nav');
     const navClasses = ['bg-background', 'shadow-md'];
 
     const navbarLogo = document.getElementById('navbar-logo');
 
-    if (window.scrollY > 20) {
+    if (window.scrollY > 100) {
       navbar.classList.add(...navClasses);
       navbarLogo.classList.add('text-primary');
     } else {
