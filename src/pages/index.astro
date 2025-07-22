@@ -6,15 +6,17 @@ import { Mouse } from 'lucide-react';
 <BaseLayout pageTitle="Visit Tidung">
   <header class="relative w-full h-screen overflow-hidden">
     <!-- Video Background -->
+    <div class="fixed top-0 left-0 w-full h-screen -z-10">
     <video
       autoplay
       muted
       loop
       playsinline
-      class="absolute top-0 left-0 w-full h-full object-cover z-0"
+      class="w-full h-full object-cover"
     >
       <source src="/videos/videotron-overlay.mp4" type="video/mp4" />
     </video>
+  </div>
 
     <!-- Content -->
     <div class="relative z-20 text-primary-foreground h-full flex items-center">
