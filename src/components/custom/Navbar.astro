@@ -1,6 +1,5 @@
 ---
 import mendayungSeribuLogo from '@/assets/images/mendayung-seribu-logo.svg';
-
 import MobileMenu from './MobileMenu';
 import Navigation from './Navigation';
 ---
@@ -30,44 +29,49 @@ import Navigation from './Navigation';
 
 <script is:inline>
   let currentPath = window.location.pathname;
+  const navbar = document.querySelector('nav');
+  const navClasses = ['bg-background', 'shadow-md'];
+  const navbarLogo = document.getElementById('navbar-logo');
+  const navLinks = document.querySelectorAll('.navigation-menu-link');
 
+  // Fungsi untuk mengatur style navbar
+  function setNavbarStyle(isScrolled) {
+    if (isScrolled || currentPath !== '/') {
+      navbar.classList.add(...navClasses);
+      navbarLogo.classList.add('text-primary');
+      navLinks.forEach((link) => {
+        link.classList.remove('text-primary-foreground');
+        link.classList.add('text-primary');
+      });
+    } else {
+      navbar.classList.remove(...navClasses);
+      navbarLogo.classList.remove('text-primary');
+      navLinks.forEach((link) => {
+        link.classList.remove('text-primary');
+        link.classList.add('text-primary-foreground');
+      });
+    }
+  }
+
+  // Tangani scroll di homepage
   if (currentPath === '/') {
-    // If window scroll Y is more than 100, add border to navbar
     window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('nav');
-      const navClasses = ['bg-background', 'shadow-md'];
-
-      const navbarLogo = document.getElementById('navbar-logo');
-      const navLinks = document.querySelectorAll('.navigation-menu-link');
-
-      if (window.scrollY > 100) {
-        navbar.classList.add(...navClasses);
-        navbarLogo.classList.add('text-primary');
-        navLinks.forEach((link) => {
-          link.classList.remove('text-primary-foreground');
-          link.classList.add('text-primary');
-        });
-      } else {
-        navbar.classList.remove(...navClasses);
-        navbarLogo.classList.remove('text-primary');
-        navLinks.forEach((link) => {
-          link.classList.remove('text-primary');
-          link.classList.add('text-primary-foreground');
-        });
-      }
+      setNavbarStyle(window.scrollY > 100);
     });
   } else {
-    const navbar = document.querySelector('nav');
-    const navClasses = ['bg-background', 'shadow-md'];
-
-    const navbarLogo = document.getElementById('navbar-logo');
-    const navLinks = document.querySelectorAll('.navigation-menu-link');
-
-    navbar.classList.add(...navClasses);
-    navbarLogo.classList.add('text-primary');
-    navLinks.forEach((link) => {
-      link.classList.remove('text-primary-foreground');
-      link.classList.add('text-primary');
-    });
+    setNavbarStyle(true);
   }
+
+  // Tangani hash di URL
+  window.addEventListener('load', () => {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      const element = document.getElementById(hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
+  });
 </script>

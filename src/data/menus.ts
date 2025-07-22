@@ -10,7 +10,8 @@ export const menus: Menu[] = [
   },
   {
     title: 'Tempat Wisata',
-    href: '/places',
+    href: '/#places',
+    scrollTarget: 'places',
   },
   {
     title: 'Kuliner',
