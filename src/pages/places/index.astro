@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+  CardContent,
+} from '@/components/ui/card';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const places = await getCollection('places');
+---
+
+<BaseLayout pageTitle="Places - AzBagas">
+  <h1 class="text-4xl text-center mt-10 font-[Karimun] text-primary">
+    Tempat Wisata di Pulau Tidung
+  </h1>
+  <section class="bg-background px-3">
+    <div
+      class="my-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
+      {
+        places.map((place) => (
+          <a href={`/places/${place.id}`} class="group">
+            <Card className="hover:shadow-lg transition-shadow duration-300 p-0 overflow-hidden">
+              <CardContent className="p-0 relative">
+                <Image
+                  src={place.data.featuredImage}
+                  alt={place.data.title}
+                  class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent transition duration-300"></div>
+                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                  <h2 class="text-4xl font-[Karimun]">{place.data.title}</h2>
+                </div>
+              </CardContent>
+            </Card>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

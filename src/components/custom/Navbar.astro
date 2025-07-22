@@ -1,41 +1,73 @@
 ---
 import mendayungSeribuLogo from '@/assets/images/mendayung-seribu-logo.svg';
 
+import MobileMenu from './MobileMenu';
 import Navigation from './Navigation';
 ---
 
 <nav
   class="py-4 sticky top-0 box-content z-50 px-6 transition-all duration-300 ease-in-out"
-  style="transition-property: background-color, border-color, box-shadow, transform;"
 >
   <div class="flex justify-between items-center">
     {/* Logo */}
     <a href="/" class="flex items-center text-primary-foreground">
-      <img
-        src={mendayungSeribuLogo.src}
-        class="w-10"
-      />
-      <span class="text-3xl ml-3 font-[Karimun]" id="navbar-logo">Visit Tidung</span>
+      <img src={mendayungSeribuLogo.src} class="w-7" />
+      <span class="text-3xl ml-3 font-[Karimun]" id="navbar-logo"
+        >Visit Tidung</span
+      >
     </a>
 
-    <Navigation client:load />
+    <div class="flex gap-4 items-center">
+      {/* Desktop Navigation */}
+      <nav class="gap-4">
+        <Navigation client:load />
+
+        <MobileMenu client:load />
+      </nav>
+    </div>
   </div>
 </nav>
 
 <script is:inline>
-  // If window scroll Y is more than 100, add border to navbar
-  window.addEventListener('scroll', () => {
+  let currentPath = window.location.pathname;
+
+  if (currentPath === '/') {
+    // If window scroll Y is more than 100, add border to navbar
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('nav');
+      const navClasses = ['bg-background', 'shadow-md'];
+
+      const navbarLogo = document.getElementById('navbar-logo');
+      const navLinks = document.querySelectorAll('.navigation-menu-link');
+
+      if (window.scrollY > 100) {
+        navbar.classList.add(...navClasses);
+        navbarLogo.classList.add('text-primary');
+        navLinks.forEach((link) => {
+          link.classList.remove('text-primary-foreground');
+          link.classList.add('text-primary');
+        });
+      } else {
+        navbar.classList.remove(...navClasses);
+        navbarLogo.classList.remove('text-primary');
+        navLinks.forEach((link) => {
+          link.classList.remove('text-primary');
+          link.classList.add('text-primary-foreground');
+        });
+      }
+    });
+  } else {
     const navbar = document.querySelector('nav');
     const navClasses = ['bg-background', 'shadow-md'];
 
     const navbarLogo = document.getElementById('navbar-logo');
+    const navLinks = document.querySelectorAll('.navigation-menu-link');
 
-    if (window.scrollY > 100) {
-      navbar.classList.add(...navClasses);
-      navbarLogo.classList.add('text-primary');
-    } else {
-      navbar.classList.remove(...navClasses);
-      navbarLogo.classList.remove('text-primary');
-    }
-  });
+    navbar.classList.add(...navClasses);
+    navbarLogo.classList.add('text-primary');
+    navLinks.forEach((link) => {
+      link.classList.remove('text-primary-foreground');
+      link.classList.add('text-primary');
+    });
+  }
 </script>

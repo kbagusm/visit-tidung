@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 @import "tw-animate-css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -153,7 +155,7 @@
 }
 
 @font-face {
-  font-family: 'Karimun';
+  font-family: 'Karimun', sans-serif;
   src: url('/fonts/Karimun.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -166,5 +168,8 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  button, [role="button"] {
+    cursor: pointer;
   }
 }
