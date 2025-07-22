@@ -32,9 +32,16 @@ const places = await getCollection('places');
                   alt={place.data.title}
                   class="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent transition duration-300"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent transition duration-300" />
                 <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
-                  <h2 class="text-4xl font-[Karimun]">{place.data.title}</h2>
+                  <h2
+                    class="text-4xl font-[Karimun] relative inline-block
+           bg-gradient-to-r from-white to-white
+           bg-[length:0%_2px] bg-left-bottom bg-no-repeat
+           transition-[background-size] duration-500 group-hover:bg-[length:100%_2px]"
+                  >
+                    {place.data.title}
+                  </h2>
                 </div>
               </CardContent>
             </Card>
