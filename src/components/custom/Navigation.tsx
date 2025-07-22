@@ -25,16 +25,28 @@ const menus: { title: string; href: string }[] = [
     href: '/',
   },
   {
-    title: 'Tentang',
-    href: '/about',
-  },
-  {
-    title: 'Wisata',
+    title: 'Tempat Wisata',
     href: '/places',
   },
   {
     title: 'Kuliner',
     href: '/culinary',
+  },
+  {
+    title: 'Sejarah',
+    href: '/history',
+  },
+  {
+    title: 'Peta',
+    href: '/map',
+  },
+  {
+    title: 'Artikel',
+    href: '/articles',
+  },
+  {
+    title: 'Booklet',
+    href: '/booklets',
   },
 ];
 
@@ -62,7 +74,7 @@ export default function Navigation() {
     <div className="flex gap-4 items-center">
       {/* Desktop Navigation */}
       <NavigationMenu className="gap-4">
-        <NavigationMenuList className="flex-col hidden sm:flex-row sm:flex gap-2">
+        <NavigationMenuList className="flex-col hidden lg:flex-row lg:flex gap-2">
           {menus.map((menu) => (
             <NavigationMenuItem key={menu.title}>
               <NavigationMenuLink
@@ -85,17 +97,24 @@ export default function Navigation() {
 
       {/* Mobile Menu Sheet */}
       <Sheet>
-        <SheetTrigger asChild className={isScrolled ? 'text-primary' : 'text-primary-foreground'}>
-          <AlignJustify className="block sm:hidden cursor-pointer" />
+        <SheetTrigger
+          asChild
+          className={isScrolled ? 'text-primary' : 'text-primary-foreground'}
+        >
+          <AlignJustify className="block lg:hidden cursor-pointer" />
         </SheetTrigger>
         <SheetContent side="top" onOpenAutoFocus={(e) => e.preventDefault()}>
           {/* <SheetHeader>
             <SheetTitle>Menu</SheetTitle>
           </SheetHeader> */}
           <div className="flex flex-col gap-4 p-4">
-            <div className='text-5xl font-[Karimun]'>Menu</div>
+            <div className="text-5xl font-[Karimun]">Menu</div>
             {menus.map((menu) => (
-              <a key={menu.title} href={menu.href} className='font-[Karimun] text-2xl'>
+              <a
+                key={menu.title}
+                href={menu.href}
+                className="font-[Karimun] text-2xl"
+              >
                 {menu.title}
               </a>
             ))}
