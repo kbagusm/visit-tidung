@@ -1,12 +1,15 @@
 ---
-import Navigation from '@/components/custom/Navigation';
+import SectionHeading from '@/components/custom/SectionHeading.astro';
+import SectionSubHeading from '@/components/custom/SectionSubHeading.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Mouse } from 'lucide-react';
+
 ---
 
 <BaseLayout pageTitle="Visit Tidung">
 
-  <header class="relative w-full h-[calc(100vh-77px)] overflow-hidden">
+  <!-- Hero Section -->
+  <header class="relative w-full h-[calc(100vh-68px)] overflow-hidden">
     <!-- Video Background -->
     <div class="fixed top-0 left-0 w-full h-screen -z-10">
     <video
@@ -33,17 +36,12 @@ import { Mouse } from 'lucide-react';
     </div>
   </header>
 
-  <!-- Next Section -->
-  <section class="h-screen bg-white">
-    <div class="p-8 max-w-3xl mx-auto">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-        aspernatur, fuga modi non, placeat doloremque nostrum consequatur quas
-        sapiente eaque commodi corporis nobis, magni fugit vel sunt. Delectus
-        fugit quis quae doloremque quasi ullam dolor expedita atque voluptates
-        id. Iure et magni deserunt provident nulla dicta officia recusandae
-        necessitatibus itaque?
-      </p>
+  <!-- Places -->
+  <section class="bg-background px-3">
+    <div class="py-24 max-w-6xl mx-auto">
+      <SectionHeading>Tempat yang Wajib Dikunjungi</SectionHeading>
+      <SectionSubHeading>Jelajahi tempat-tempat terindah di Pulau Tidung</SectionSubHeading>
+      
     </div>
   </section>
 </BaseLayout>
