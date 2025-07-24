@@ -4,7 +4,12 @@ import SectionSubHeading from '@/components/custom/SectionSubHeading.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Mouse, Mountain, MapPin, Users, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getCollection } from 'astro:content'
 
+// Ambil data tempat wisata
+const places = await getCollection('places');
+// Ambil 6 tempat pertama untuk ditampilkan di homepage
+const featuredPlaces = places.slice(0, 6);
 ---
 
 <BaseLayout pageTitle="Visit Tidung">
@@ -38,7 +43,8 @@ import { Button } from '@/components/ui/button';
   </header>
 
   <!-- Places Section -->
-  <section id="places" class="bg-background px-3">
+  <section id="places" class="bg-background px-3" style="background: linear-gradient(135deg, #ffffff 0%, #e0fdf4 40%, #dbeafe 80%);"
+>
     <div class="py-12 max-w-6xl mx-auto">
 
       <div class="text-center mb-4">
@@ -55,24 +61,16 @@ import { Button } from '@/components/ui/button';
       <!-- Places Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         
-        <!-- Tidung Bridge Card -->
+        <!-- Card 1: Tidung Bridge -->
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-
-          <!-- Card Image Placeholder -->
-          <div class="h-64 bg-gradient-to-br from-gray-200 to-gray-300 relative overflow-hidden">
-			<img src="src/assets/images/places/jembatan-cinta.jpg" alt="Jembatan Cinta" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+          <div class="h-64 relative overflow-hidden">
+            <img src="src/assets/images/places/jembatan-cinta.jpg" alt="Jembatan Cinta" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
             <div class="absolute top-4 left-4">
               <span class="inline-block px-3 py-1 bg-sky-500 text-white rounded-full text-xs font-medium">
                 Iconic
               </span>
             </div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-12 h-12 border-2 border-gray-400 rounded flex items-center justify-center">
-                <div class="w-6 h-6 bg-gray-400 rounded"></div>
-              </div>
-            </div>
           </div>
-          
           <div class="p-6">
             <div class="flex items-center mb-3">
               <Mountain class="w-5 h-5 text-blue-600 mr-2" />
@@ -90,24 +88,16 @@ import { Button } from '@/components/ui/button';
           </div>
         </div>
 
-        <!-- Saung Sunset Beach Card -->
+        <!-- Card 2: Pulau Payung -->
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-          
-			<!-- Card Image Placeholder -->
-          <div class="h-64 bg-gradient-to-br from-gray-200 to-gray-300 relative overflow-hidden">
-			<img src="src/assets/images/places/pulau-payung.jpeg" alt="Tidung Bridge" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+          <div class="h-64 relative overflow-hidden">
+            <img src="src/assets/images/places/pulau-payung.jpeg" alt="Pulau Payung" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
             <div class="absolute top-4 left-4">
               <span class="inline-block px-3 py-1 bg-orange-500 text-white rounded-full text-xs font-medium">
                 Romantic
               </span>
             </div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-12 h-12 border-2 border-gray-400 rounded flex items-center justify-center">
-                <div class="w-6 h-6 bg-gray-400 rounded"></div>
-              </div>
-            </div>
           </div>
-          
           <div class="p-6">
             <div class="flex items-center mb-3">
               <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -125,28 +115,22 @@ import { Button } from '@/components/ui/button';
           </div>
         </div>
 
-        <!-- Coral Garden Card -->
+        <!-- Card 3: lorem -->
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-          <!-- Card Image Placeholder -->
-          <div class="h-64 bg-gradient-to-br from-gray-200 to-gray-300 relative overflow-hidden">
+          <div class="h-64 relative overflow-hidden">
+            <img src="src/assets/images/places/cat1.jpg" alt="Coral Garden" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
             <div class="absolute top-4 left-4">
               <span class="inline-block px-3 py-1 bg-green-500 text-white rounded-full text-xs font-medium">
-                Snorkeling
+                lorem
               </span>
             </div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-12 h-12 border-2 border-gray-400 rounded flex items-center justify-center">
-                <div class="w-6 h-6 bg-gray-400 rounded"></div>
-              </div>
-            </div>
           </div>
-          
           <div class="p-6">
             <div class="flex items-center mb-3">
               <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
-              <h3 class="text-xl font-bold text-gray-900">apa kek ini</h3>
+              <h3 class="text-xl font-bold text-gray-900">Coral Garden</h3>
             </div>
             <p class="text-gray-600 text-sm mb-4 leading-relaxed">
               Underwater paradise with vibrant coral reefs and diverse marine life, perfect for snorkeling and diving.
@@ -158,12 +142,96 @@ import { Button } from '@/components/ui/button';
           </div>
         </div>
 
+        <!-- Card 4: ipsum -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+          <div class="h-64 relative overflow-hidden">
+            <img src="src/assets/images/places/cat2.jpg" alt="Pantai Tanjung Tinggi" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute top-4 left-4">
+              <span class="inline-block px-3 py-1 bg-yellow-500 text-white rounded-full text-xs font-medium">
+                Beach
+              </span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+              </svg>
+              <h3 class="text-xl font-bold text-gray-900">Pantai Tanjung Tinggi</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+              Famous for its crystal clear waters and white sandy beaches, a perfect spot for swimming and relaxation.
+            </p>
+            <div class="flex items-center text-blue-600 text-sm">
+              <MapPin class="w-4 h-4 mr-2" />
+              North coast of Tidung Kecil
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: lorem -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+          <div class="h-64 relative overflow-hidden">
+            <img src="src/assets/images/places/Febri Cuwitno.jpeg" alt="Pulau Harapan" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute top-4 left-4">
+              <span class="inline-block px-3 py-1 bg-purple-500 text-white rounded-full text-xs font-medium">
+                Island
+              </span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"/>
+              </svg>
+              <h3 class="text-xl font-bold text-gray-900">Pulau Harapan</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+              A small neighboring island with untouched beauty, great for day trips and nature photography.
+            </p>
+            <div class="flex items-center text-blue-600 text-sm">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 9.586V6z" clip-rule="evenodd"/>
+              </svg>
+              30 minutes boat ride from Tidung
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: lorem -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+          <div class="h-64 relative overflow-hidden">
+            <img src="src/assets/images/places/dapet perkoro.jpg" alt="Mangrove Forest" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute top-4 left-4">
+              <span class="inline-block px-3 py-1 bg-teal-500 text-white rounded-full text-xs font-medium">
+                Eco-Tourism
+              </span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center mb-3">
+              <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+              <h3 class="text-xl font-bold text-gray-900">Mangrove Forest</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+              Explore the lush mangrove ecosystem with wooden pathways, perfect for nature lovers and bird watching.
+            </p>
+            <div class="flex items-center text-blue-600 text-sm">
+              <MapPin class="w-4 h-4 mr-2" />
+              Southeast coast of Tidung Besar
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Call to Action Button -->
       <div class="text-center">
-        <a href="/places" class="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 group">
-          Lihat Lebih Lengkap
+        <a href="/places" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 hover:from-blue-600 hover:via-cyan-500 hover:to-green-500 text-white font-semibold rounded-lg transition-all duration-200 group shadow-lg">
+          Kunjungi Wisata Ikonik Lainnya!
           <ArrowRight class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
         </a>
       </div>

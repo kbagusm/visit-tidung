@@ -27,45 +27,60 @@ import Navigation from './Navigation';
   </div>
 </nav>
 
-<script is:inline>
-  let currentPath = window.location.pathname;
-  const navbar = document.querySelector('nav');
-  const navClasses = ['bg-background', 'shadow-md'];
-  const navbarLogo = document.getElementById('navbar-logo');
-  const navLinks = document.querySelectorAll('.navigation-menu-link');
+<style>
+  .navigation-menu-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
+  }
+</style>
 
-  // Fungsi untuk mengatur style navbar
-  function setNavbarStyle(isScrolled) {
-    if (isScrolled || currentPath !== '/') {
-      navbar.classList.add(...navClasses);
-      navbarLogo.classList.add('text-primary');
-      navLinks.forEach((link) => {
-        link.classList.remove('text-primary-foreground');
-        link.classList.add('text-primary');
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname;
+    const navbar = document.querySelector('nav');
+    const navClasses = ['bg-background', 'shadow-md'];
+    const navbarLogo = document.getElementById('navbar-logo');
+    const navLinks = document.querySelectorAll('.navigation-menu-link');
+
+    // Fungsi untuk mengatur style navbar
+    function setNavbarStyle(isScrolled) {
+      if (isScrolled || currentPath !== '/') {
+        navbar.classList.add(...navClasses);
+        navbarLogo.classList.add('text-primary');
+        navLinks.forEach((link) => {
+          link.classList.remove('text-primary-foreground');
+          link.classList.add('text-primary');
+        });
+      } else {
+        navbar.classList.remove(...navClasses);
+        navbarLogo.classList.remove('text-primary');
+        navLinks.forEach((link) => {
+          link.classList.remove('text-primary');
+          link.classList.add('text-primary-foreground');
+        });
+      }
+    }
+
+    // Tangani scroll di homepage
+    if (currentPath === '/') {
+      setNavbarStyle(window.scrollY > 100);
+      
+      window.addEventListener('scroll', () => {
+        setNavbarStyle(window.scrollY > 100);
       });
     } else {
-      navbar.classList.remove(...navClasses);
-      navbarLogo.classList.remove('text-primary');
-      navLinks.forEach((link) => {
-        link.classList.remove('text-primary');
-        link.classList.add('text-primary-foreground');
-      });
+      setNavbarStyle(true);
     }
-  }
 
-  // Tangani scroll di homepage
-  if (currentPath === '/') {
-    window.addEventListener('scroll', () => {
-      setNavbarStyle(window.scrollY > 100);
-    });
-  } else {
-    setNavbarStyle(true);
-  }
-
-  // Tangani hash di URL
-  window.addEventListener('load', () => {
+    // Tangani hash di URL untuk scroll ke section
     const hash = window.location.hash.substring(1);
-    if (hash) {
+    if (hash && window.location.pathname === '/') {
       const element = document.getElementById(hash);
       if (element) {
         setTimeout(() => {
