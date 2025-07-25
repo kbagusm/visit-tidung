@@ -1,6 +1,7 @@
 export type Menu = {
   title: string;
   href: string;
+  scrollTarget?: string; // Tambahkan tanda tanya untuk optional property
 }
 
 export const menus: Menu[] = [
@@ -15,7 +16,8 @@ export const menus: Menu[] = [
   },
   {
     title: 'Kuliner',
-    href: '/culinary',
+    href: '/#culinary-section',
+    scrollTarget: 'culinary-section'
   },
   {
     title: 'Sejarah',
