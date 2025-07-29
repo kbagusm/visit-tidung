@@ -4,17 +4,18 @@ function CulinaryCard({
   title, 
   description,
   image,
-  rating,
-  slug
+  rating
 }: {
   title: string;
   description: string;
   image: string;
-  rating: number;
-  slug: string;
+  rating?: number;
 }) {
   // Fungsi untuk menampilkan bintang rating
   const renderRating = () => {
+    // Jika rating tidak ada, jangan render apa-apa
+    if (rating === undefined || rating === null) return null;
+    
     const stars = [];
     for (let i = 0; i < 5; i++) {
       stars.push(
@@ -33,7 +34,7 @@ function CulinaryCard({
   };
 
   return (
-    <a href={`/culinary/${slug}`} className="block group h-full">
+    <div className="block group h-full">
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden group-hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
         <div className="h-48 relative overflow-hidden">
           <img 
@@ -54,18 +55,21 @@ function CulinaryCard({
             {description}
           </p>
           
-          <div className="flex justify-between items-center mt-2">
-            <div className="flex">
-              {renderRating()}
+          {/* Hanya tampilkan rating jika rating tidak undefined */}
+          {rating !== undefined && rating !== null && (
+            <div className="flex justify-between items-center mt-2">
+              <div className="flex">
+                {renderRating()}
+              </div>
+              
+              <div className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">
+                {rating}/5
+              </div>
             </div>
-            
-            <div className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">
-              {rating}/5
-            </div>
-          </div>
+          )}
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 

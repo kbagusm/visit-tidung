@@ -20,15 +20,17 @@ const pageTitle = "Kuliner Khas Pulau Tidung";
       </h1>
       
       <p class="text-center text-blue-600 max-w-3xl mx-auto mb-16 text-lg">
-        Taste the authentic flavors of Tidung Island’s fresh seafood and traditional dishes
+        Taste the authentic flavors of Tidung Island's fresh seafood and traditional dishes
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {culinaryItems.map((item, index) => (
+          // HAPUS SwiperSlide, langsung gunakan CulinaryCard
           <CulinaryCard 
             title={item.title}
             description={item.description}
             image={item.image}
+            rating={item.rating}
           />
         ))}
       </div>

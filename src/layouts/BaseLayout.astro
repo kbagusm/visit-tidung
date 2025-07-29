@@ -17,5 +17,33 @@ const { pageTitle } = Astro.props;
     <Navbar />
 
     <slot />
+  
+  <script is:inline>
+    // Fungsi untuk animasi saat scroll
+    function animateOnScroll() {
+      const sections = document.querySelectorAll('section[id], .animate-on-scroll');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            // Untuk elemen dengan kelas animate-on-scroll, tambahkan kelas visible
+            if (entry.target.classList.contains('animate-on-scroll')) {
+              entry.target.classList.add('visible');
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    }
+    
+    // Jalankan setelah halaman dimuat
+    window.addEventListener('DOMContentLoaded', animateOnScroll);
+  </script>
+
   </body>
 </html>
