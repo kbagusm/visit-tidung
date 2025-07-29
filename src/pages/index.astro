@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { getCollection } from 'astro:content'
 import CulinarySection from '@/components/custom/CulinarySection';
 import HistorySection from '@/components/custom/HistorySection';
+import MapsSection from '@/components/custom/MapsSection';
 
 // Ambil data tempat wisata
 const places = await getCollection('places');
@@ -270,5 +271,8 @@ const featuredPlaces = places.slice(0, 6);
 
   <!-- History Section -->
   <HistorySection client:load />
+
+    <!-- Maps Section -->
+  <MapsSection client:load />
 
 </BaseLayout>

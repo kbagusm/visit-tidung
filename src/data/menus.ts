@@ -25,8 +25,9 @@ export const menus: Menu[] = [
     scrollTarget: 'history'
   },
   {
-    title: 'Peta',
-    href: '/map',
+    title: 'Peta', 
+    href: '/#maps', 
+    scrollTarget: 'maps' 
   },
   {
     title: 'Artikel',
