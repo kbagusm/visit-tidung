@@ -1,0 +1,58 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map(article => ({
+    params: { slug: article.slug }, 
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const pageTitle = article.data.title;
+---
+
+<BaseLayout {pageTitle}>
+  <section class="py-20 bg-gradient-to-br from-cyan-50 to-blue-50">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <article class="bg-white rounded-xl shadow-lg p-8">
+        <div class="mb-8">
+          <div class="relative h-96 overflow-hidden rounded-lg">
+            {article.data.image && (
+              <img
+                src={article.data.image}
+                alt={article.data.title}
+                class="w-full h-full object-cover"
+              />
+            )}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+          </div>
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl font-bold text-blue-900 mb-6">{article.data.title}</h1>
+        
+        <div class="flex items-center justify-between text-sm text-gray-500 mb-8">
+          <div>
+            <span>Oleh {article.data.author}</span>
+            <span class="mx-2">•</span>
+            <span>
+              {new Date(article.data.date).toLocaleDateString('id-ID', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
+            </span>
+          </div>
+          <span>{article.data.readTime}</span>
+        </div>
+        
+        <div class="prose prose-lg max-w-none">
+          <Content />
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

@@ -30,8 +30,9 @@ export const menus: Menu[] = [
     scrollTarget: 'maps' 
   },
   {
-    title: 'Artikel',
-    href: '/articles',
+    title: 'Artikel', 
+    href: '/#articles', 
+    scrollTarget: 'articles' 
   },
   {
     title: 'Booklet',
