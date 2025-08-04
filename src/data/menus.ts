@@ -1,6 +1,7 @@
 export type Menu = {
   title: string;
   href: string;
+  scrollTarget?: string; // Tambahkan tanda tanya untuk optional property
 }
 
 export const menus: Menu[] = [
@@ -10,26 +11,32 @@ export const menus: Menu[] = [
   },
   {
     title: 'Tempat Wisata',
-    href: '/places',
+    href: '/#places',
+    scrollTarget: 'places',
   },
   {
     title: 'Kuliner',
-    href: '/culinary',
+    href: '/#culinary-section',
+    scrollTarget: 'culinary-section'
   },
   {
     title: 'Sejarah',
-    href: '/history',
+    href: '/#history',
+    scrollTarget: 'history'
   },
   {
-    title: 'Peta',
-    href: '/map',
+    title: 'Peta', 
+    href: '/#maps', 
+    scrollTarget: 'maps' 
   },
   {
-    title: 'Artikel',
-    href: '/articles',
+    title: 'Artikel', 
+    href: '/#articles', 
+    scrollTarget: 'articles' 
   },
   {
     title: 'Booklet',
-    href: '/booklets',
+    href: '/#booklets',
+    scrollTarget: 'booklets'
   },
 ];

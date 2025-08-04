@@ -1,0 +1,70 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const articles = await getCollection('articles');
+const pageTitle = "Artikel Pulau Tidung";
+---
+
+<BaseLayout {pageTitle}>
+  <section class="py-20 bg-gradient-to-br from-cyan-50 to-blue-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Artikel Pulau Tidung</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Temukan panduan perjalanan, tips, dan cerita inspiratif tentang Pulau Tidung
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <a 
+            href={`/articles/${article.slug}`} 
+            class="group block h-full"
+          >
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+              <div class="relative h-48 overflow-hidden">
+                {article.data.image && (
+                  <Image
+                    src={article.data.image}
+                    alt={article.data.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
+                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              </div>
+              
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-xl font-bold text-blue-900 mb-3 group-hover:text-cyan-600 transition-colors">
+                  {article.data.title}
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                  {article.data.excerpt}
+                </p>
+                
+                <div class="flex items-center justify-between text-sm text-gray-500">
+                  <span>{article.data.author}</span>
+                  <span>{article.data.readTime}</span>
+                </div>
+                
+                <div class="flex items-center justify-between mt-3">
+                  <span class="text-sm text-gray-500">
+                    {new Date(article.data.date).toLocaleDateString('id-ID', { 
+                      year: 'numeric', 
+                      month: 'short', 
+                      day: 'numeric' 
+                    })}
+                  </span>
+                  <span class="text-blue-600 group-hover:text-cyan-600 font-medium transition-colors">
+                    Baca Selengkapnya
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

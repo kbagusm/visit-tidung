@@ -1,73 +1,85 @@
 ---
 import mendayungSeribuLogo from '@/assets/images/mendayung-seribu-logo.svg';
-
 import MobileMenu from './MobileMenu';
 import Navigation from './Navigation';
 ---
 
 <nav
-  class="py-4 sticky top-0 box-content z-50 px-6 transition-all duration-300 ease-in-out"
+  class="py-4 sticky top-0 z-50 px-6 transition-all duration-300 ease-in-out"
+  style="border: none !important; outline: none !important;"
 >
   <div class="flex justify-between items-center">
     {/* Logo */}
-    <a href="/" class="flex items-center text-primary-foreground">
+    <a href="/" class="flex items-center focus:outline-none">
       <img src={mendayungSeribuLogo.src} class="w-7" />
-      <span class="text-3xl ml-3 font-[Karimun]" id="navbar-logo"
+      <span class="text-3xl ml-3 font-[Karimun] text-primary-foreground" id="navbar-logo"
         >Visit Tidung</span
       >
     </a>
 
     <div class="flex gap-4 items-center">
       {/* Desktop Navigation */}
-      <nav class="gap-4">
+      <nav class="hidden lg:block">
         <Navigation client:load />
-
-        <MobileMenu client:load />
       </nav>
+
+      <MobileMenu client:load />
     </div>
   </div>
 </nav>
 
 <script is:inline>
-  let currentPath = window.location.pathname;
+  // Inisialisasi variabel
+  const navbar = document.querySelector('nav');
+  const navClasses = ['bg-white', 'shadow-md'];
+  const navbarLogo = document.getElementById('navbar-logo');
+  const navLinks = document.querySelectorAll('.navigation-menu-link');
+  
+  // Fungsi untuk mengatur style navbar
+  function setNavbarStyle(isScrolled) {
+    if (isScrolled) {
+      navbar.classList.add(...navClasses);
+      navbarLogo.classList.remove('text-primary-foreground');
+      navbarLogo.classList.add('text-primary');
+      navLinks.forEach(link => {
+        link.classList.remove('text-primary-foreground');
+        link.classList.add('text-primary');
+      });
+    } else {
+      navbar.classList.remove(...navClasses);
+      navbarLogo.classList.remove('text-primary');
+      navbarLogo.classList.add('text-primary-foreground');
+      navLinks.forEach(link => {
+        link.classList.remove('text-primary');
+        link.classList.add('text-primary-foreground');
+      });
+    }
+  }
 
-  if (currentPath === '/') {
-    // If window scroll Y is more than 100, add border to navbar
+  // Cek apakah di homepage
+  if (window.location.pathname === '/') {
+    // Set initial state
+    setNavbarStyle(window.scrollY > 100);
+    
+    // Tambahkan event listener untuk scroll
     window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('nav');
-      const navClasses = ['bg-background', 'shadow-md'];
-
-      const navbarLogo = document.getElementById('navbar-logo');
-      const navLinks = document.querySelectorAll('.navigation-menu-link');
-
-      if (window.scrollY > 100) {
-        navbar.classList.add(...navClasses);
-        navbarLogo.classList.add('text-primary');
-        navLinks.forEach((link) => {
-          link.classList.remove('text-primary-foreground');
-          link.classList.add('text-primary');
-        });
-      } else {
-        navbar.classList.remove(...navClasses);
-        navbarLogo.classList.remove('text-primary');
-        navLinks.forEach((link) => {
-          link.classList.remove('text-primary');
-          link.classList.add('text-primary-foreground');
-        });
-      }
+      setNavbarStyle(window.scrollY > 100);
     });
   } else {
-    const navbar = document.querySelector('nav');
-    const navClasses = ['bg-background', 'shadow-md'];
-
-    const navbarLogo = document.getElementById('navbar-logo');
-    const navLinks = document.querySelectorAll('.navigation-menu-link');
-
-    navbar.classList.add(...navClasses);
-    navbarLogo.classList.add('text-primary');
-    navLinks.forEach((link) => {
-      link.classList.remove('text-primary-foreground');
-      link.classList.add('text-primary');
-    });
+    // Untuk halaman lain, langsung set style scrolled
+    setNavbarStyle(true);
   }
+
+  // Tangani hash di URL untuk scroll otomatis
+  window.addEventListener('load', () => {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      const element = document.getElementById(hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
+  });
 </script>

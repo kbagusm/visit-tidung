@@ -1,0 +1,109 @@
+import React, { useRef, useEffect } from 'react';
+import { History, Users, Calendar } from 'lucide-react';
+
+function HistorySection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0', 'translate-y-10');
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <section
+      id="history"
+      ref={sectionRef}
+      className="py-10 px-4 bg-gradient-to-r from-slate-50 to-blue-50 opacity-0 transform translate-y-10 transition-all duration-500"
+    >
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-emerald-100 text-slate-800 rounded-full text-sm font-medium mb-4">
+            Heritage
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Historical Heritage</h2>
+          <p className="text-xl text-blue-700 max-w-3xl mx-auto">
+            Discover the rich maritime history and cultural heritage that shaped Tidung Island's identity
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="relative">
+            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
+              <span className="text-gray-500">Sejarah Image</span>
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-xl" />
+          </div>
+
+          <div className="space-y-8">
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <History className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-blue-900 mb-3">Maritime Trading Hub</h3>
+                <p className="text-blue-600 text-lg">
+                  For centuries, Tidung Island served as a crucial stop for maritime traders navigating the Java Sea,
+                  connecting various Indonesian islands and international trade routes.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <Users className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-blue-900 mb-3">Betawi Cultural Roots</h3>
+                <p className="text-blue-600 text-lg">
+                  The island's inhabitants are primarily of Betawi descent, preserving traditional customs, language,
+                  and architectural styles that reflect Jakarta's indigenous culture.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <Calendar className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-blue-900 mb-3">Modern Conservation</h3>
+                <p className="text-blue-600 text-lg">
+                  Today, Tidung Island leads Indonesia's blue economy initiatives, balancing sustainable tourism with
+                  marine conservation efforts to preserve its natural heritage for future generations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Tombol untuk menuju halaman sejarah lengkap */}
+        <div className="text-center mt-16">
+          <a 
+            href="/history" 
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-teal-600 transition-colors duration-300"
+          >
+            Explore Full History
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default HistorySection;

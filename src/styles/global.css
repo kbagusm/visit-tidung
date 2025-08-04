@@ -5,6 +5,29 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+.swiper {
+  padding-bottom: 3rem;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+  color: #3b82f6; /* Warna biru sesuai tema */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #3b82f6;
+}
+
+/* Menyembunyikan navigasi default */
+.swiper-button-next:after, 
+.swiper-button-prev:after {
+  display: none;
+}
+
 :root {
   --background: oklch(0.9876 0.0020 247.8400);
   --foreground: oklch(0.1536 0.0030 248);
