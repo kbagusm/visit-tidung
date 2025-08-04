@@ -1,6 +1,6 @@
 ---
-import SectionHeading from '@/components/custom/SectionHeading.astro';
-import SectionSubHeading from '@/components/custom/SectionSubHeading.astro';
+import SectionHeading from '@/components/custom/SectionHeading';
+import SectionSubHeading from '@/components/custom/SectionSubHeading';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Mouse, Mountain, MapPin, Users, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -40,8 +40,7 @@ const featuredPlaces = places.slice(0, 6);
       <div class="md:ml-32 md:max-w-xl px-3 md:px-0 -mt-28">
         <h1 class="text-6xl md:text-8xl font-[Karimun] text-center md:text-left">Pulau Tidung</h1>
         <p class="text-lg -mt-3 text-center md:text-left">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quam
-          accusamus sint corrupti soluta eveniet sapiente iure.
+          Surga ketenangan dan keindahan, Pulau Tidung menawarkan pengalaman menyegarkan bagi para pelancong yang ingin melepaskan penat dari rutinitas sehari-hari.
         </p>
       </div>
 			<div class="absolute bottom-5 left-1/2 animate-bounce"><Mouse/></div>
@@ -58,9 +57,11 @@ const featuredPlaces = places.slice(0, 6);
       </div>
 
       <!-- Section Header -->
-      <h2 class="text-6xl md:text-7xl font-[Karimun] text-center md:text-center">Tempat yang Wajib Dikunjungi</h2>
+      <SectionHeading>Tempat yang Wajib Dikunjungi</SectionHeading>
       <!-- <SectionHeading>Tempat yang Wajib Dikunjungi</SectionHeading> -->
-      <SectionSubHeading>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</SectionSubHeading>
+      <SectionSubHeading>
+        Jelajahi keindahan alam yang memukau
+      </SectionSubHeading>
 
       <!-- Places Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -251,13 +252,14 @@ const featuredPlaces = places.slice(0, 6);
         </span>
       </div>
       
-      <h2 class="text-4xl md:text-5xl font-bold text-blue-900 text-center mb-4">
-        Local Culinary Delights
-      </h2>
+    
+      <SectionHeading>
+        Kuliner Khas
+      </SectionHeading>
       
-      <p class="text-center text-blue-600 max-w-3xl mx-auto mb-16 text-lg">
-        Taste the authentic flavors of Tidung Island's fresh seafood and traditional dishes
-      </p>
+      <SectionSubHeading>
+        Rasakan cita rasa otentik hidangan lokal Pulau Tidung
+      </SectionSubHeading>
 
       <CulinarySection client:load />
       

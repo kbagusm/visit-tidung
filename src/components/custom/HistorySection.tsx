@@ -1,18 +1,23 @@
 import React, { useRef, useEffect } from 'react';
 import { History, Users, Calendar } from 'lucide-react';
+import SectionHeading from './SectionHeading';
+import SectionSubHeading from './SectionSubHeading';
 
 function HistorySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove('opacity-0', 'translate-y-10');
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-        }
-      });
-    }, { threshold: 0.1 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
@@ -36,10 +41,8 @@ function HistorySection() {
           <span className="inline-block px-4 py-2 bg-emerald-100 text-slate-800 rounded-full text-sm font-medium mb-4">
             Heritage
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Historical Heritage</h2>
-          <p className="text-xl text-blue-700 max-w-3xl mx-auto">
-            Discover the rich maritime history and cultural heritage that shaped Tidung Island's identity
-          </p>
+          <SectionHeading>Sejarah dan Budaya Pulau Tidung</SectionHeading>
+          <SectionSubHeading>Temukan kekayaan sejarah maritim dan warisan budaya yang membentuk identitas Pulau Tidung</SectionSubHeading>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -56,10 +59,13 @@ function HistorySection() {
                 <History className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-semibold text-blue-900 mb-3">Maritime Trading Hub</h3>
+                <h3 className="text-2xl font-semibold text-blue-900 mb-3">
+                  Maritime Trading Hub
+                </h3>
                 <p className="text-blue-600 text-lg">
-                  For centuries, Tidung Island served as a crucial stop for maritime traders navigating the Java Sea,
-                  connecting various Indonesian islands and international trade routes.
+                  For centuries, Tidung Island served as a crucial stop for
+                  maritime traders navigating the Java Sea, connecting various
+                  Indonesian islands and international trade routes.
                 </p>
               </div>
             </div>
@@ -69,10 +75,13 @@ function HistorySection() {
                 <Users className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-semibold text-blue-900 mb-3">Betawi Cultural Roots</h3>
+                <h3 className="text-2xl font-semibold text-blue-900 mb-3">
+                  Betawi Cultural Roots
+                </h3>
                 <p className="text-blue-600 text-lg">
-                  The island's inhabitants are primarily of Betawi descent, preserving traditional customs, language,
-                  and architectural styles that reflect Jakarta's indigenous culture.
+                  The island's inhabitants are primarily of Betawi descent,
+                  preserving traditional customs, language, and architectural
+                  styles that reflect Jakarta's indigenous culture.
                 </p>
               </div>
             </div>
@@ -82,20 +91,24 @@ function HistorySection() {
                 <Calendar className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-semibold text-blue-900 mb-3">Modern Conservation</h3>
+                <h3 className="text-2xl font-semibold text-blue-900 mb-3">
+                  Modern Conservation
+                </h3>
                 <p className="text-blue-600 text-lg">
-                  Today, Tidung Island leads Indonesia's blue economy initiatives, balancing sustainable tourism with
-                  marine conservation efforts to preserve its natural heritage for future generations.
+                  Today, Tidung Island leads Indonesia's blue economy
+                  initiatives, balancing sustainable tourism with marine
+                  conservation efforts to preserve its natural heritage for
+                  future generations.
                 </p>
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Tombol untuk menuju halaman sejarah lengkap */}
         <div className="text-center mt-16">
-          <a 
-            href="/history" 
+          <a
+            href="/history"
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-teal-600 transition-colors duration-300"
           >
             Explore Full History

@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { FileText, Download, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import SectionHeading from './SectionHeading';
+import SectionSubHeading from './SectionSubHeading';
 
 function BookletSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -96,10 +98,12 @@ function BookletSection() {
     >
       <div className="container mx-auto px-4">
         <div ref={containerRef} className="text-center mb-16 opacity-0 transform translate-y-10 transition-all duration-500">
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Travel Booklets</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Download comprehensive guides and booklets for your Tidung Island adventure
-          </p>
+          <SectionHeading>
+            Booklet
+          </SectionHeading>
+          <SectionSubHeading>
+            Baca dan unduh booklet lengkap untuk petualangan Pulau Tidung Anda
+          </SectionSubHeading>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

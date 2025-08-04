@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { MapPin, Clock, Calendar, Map } from 'lucide-react';
+import SectionHeading from './SectionHeading';
+import SectionSubHeading from './SectionSubHeading';
 
 function MapsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -61,10 +63,10 @@ function MapsSection() {
     >
       <div className="container mx-auto px-4">
         <div ref={containerRef} className="text-center mb-16 opacity-0 transform translate-y-10 transition-all duration-500">
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Island Map & Location</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Find your way around Tidung Island and plan your perfect adventure
-          </p>
+          <SectionHeading>Peta dan Lokasi Pulau Tidung</SectionHeading>
+          <SectionSubHeading>
+            Temukan cara terbaik untuk menjelajahi keindahan Pulau Tidung dengan peta interaktif dan informasi lokasi penting
+          </SectionSubHeading>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">

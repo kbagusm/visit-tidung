@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import SectionHeading from './SectionHeading';
+import SectionSubHeading from './SectionSubHeading';
 
 function ArticleSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -99,10 +101,12 @@ function ArticleSection() {
     >
       <div className="container mx-auto px-4">
         <div ref={containerRef} className="text-center mb-16 opacity-0 transform translate-y-10 transition-all duration-500">
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Travel Articles</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Read inspiring stories and helpful guides about Tidung Island
-          </p>
+          <SectionHeading>
+            Artikel Terkait
+          </SectionHeading>
+          <SectionSubHeading>
+            Jelajahi artikel menarik tentang Pulau Tidung
+          </SectionSubHeading>
         </div>
 
         <div className="relative">
