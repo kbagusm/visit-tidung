@@ -20,7 +20,14 @@ const featuredPlaces = places.slice(0, 6);
   <header class="relative w-full h-[calc(100vh-80px)] overflow-hidden">
     <!-- Video Background -->
     <div class="fixed top-0 left-0 w-full h-screen -z-10">
-      <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="w-full h-full object-cover"
+        id="hero-video"
+      >
         <source src="/videos/videotron-overlay.mp4" type="video/mp4" />
       </video>
     </div>
@@ -60,3 +67,13 @@ const featuredPlaces = places.slice(0, 6);
   <!-- Booklets Section -->
   <BookletSection client:load />
 </BaseLayout>
+
+<script is:inline>
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight) {
+      document.getElementById('hero-video').classList.add('hidden');
+    } else {
+      document.getElementById('hero-video').classList.remove('hidden');
+    }
+  });
+</script>
