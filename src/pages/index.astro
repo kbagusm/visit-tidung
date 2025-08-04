@@ -1,16 +1,13 @@
 ---
-import SectionHeading from '@/components/custom/SectionHeading';
-import SectionSubHeading from '@/components/custom/SectionSubHeading';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { Mouse, Mountain, MapPin, Users, ArrowRight } from 'lucide-react';
-import { getCollection } from 'astro:content'
+import { Mouse } from 'lucide-react';
+import { getCollection } from 'astro:content';
 import CulinarySection from '@/components/custom/CulinarySection';
 import HistorySection from '@/components/custom/HistorySection';
 import MapsSection from '@/components/custom/MapsSection';
 import ArticleSection from '@/components/custom/ArticleSection';
 import BookletSection from '@/components/custom/BookletSection';
 import PlacesSection from '@/components/custom/PlacesSection';
-
 
 // Ambil data tempat wisata
 const places = await getCollection('places');
@@ -19,71 +16,47 @@ const featuredPlaces = places.slice(0, 6);
 ---
 
 <BaseLayout pageTitle="Visit Tidung">
-
   <!-- Hero Section -->
   <header class="relative w-full h-[calc(100vh-80px)] overflow-hidden">
     <!-- Video Background -->
     <div class="fixed top-0 left-0 w-full h-screen -z-10">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      class="w-full h-full object-cover"
-    >
-      <source src="/videos/videotron-overlay.mp4" type="video/mp4" />
-    </video>
-  </div>
+      <video autoplay muted loop playsinline class="w-full h-full object-cover">
+        <source src="/videos/videotron-overlay.mp4" type="video/mp4" />
+      </video>
+    </div>
 
     <!-- Content -->
     <div class="relative z-20 text-primary-foreground h-full flex items-center">
       <div class="md:ml-32 md:max-w-xl px-3 md:px-0 -mt-28">
-        <h1 class="text-6xl md:text-8xl font-[Karimun] text-center md:text-left">Pulau Tidung</h1>
+        <h1
+          class="text-6xl md:text-8xl font-[Karimun] text-center md:text-left"
+        >
+          Pulau Tidung
+        </h1>
         <p class="text-lg -mt-3 text-center md:text-left">
-          Surga ketenangan dan keindahan, Pulau Tidung menawarkan pengalaman menyegarkan bagi para pelancong yang ingin melepaskan penat dari rutinitas sehari-hari.
+          Surga ketenangan dan keindahan, Pulau Tidung menawarkan pengalaman
+          menyegarkan bagi para pelancong yang ingin melepaskan penat dari
+          rutinitas sehari-hari.
         </p>
       </div>
-			<div class="absolute bottom-5 left-1/2 animate-bounce"><Mouse/></div>
+      <div class="absolute bottom-5 left-1/2 animate-bounce"><Mouse /></div>
     </div>
   </header>
 
   <PlacesSection />
 
   <!-- Culinary Section -->
-  <section id="culinary-section" class="py-10 px-4 bg-white transform transition-all duration-500">
-    <div class="max-w-6xl mx-auto">
-      
-      <SectionHeading>
-        Kuliner Khas
-      </SectionHeading>
-      
-      <SectionSubHeading>
-        Rasakan cita rasa otentik hidangan lokal Pulau Tidung
-      </SectionSubHeading>
-
-      <CulinarySection client:load />
-      
-      <!-- Tombol Lihat Semua Kuliner -->
-      <div class="text-center mt-8">
-        <a 
-          href="/culinary"
-          class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 hover:from-blue-600 hover:via-cyan-500 hover:to-green-500 text-white font-semibold rounded-lg transition-all duration-200 group shadow-lg">
-          Ketahui Kuliner Khas Tidung Lainnya!
-        </a>
-      </div>
-    </div>
-  </section>
+  <CulinarySection client:load />
 
   <!-- History Section -->
   <HistorySection client:load />
 
-    <!-- Maps Section -->
+  <!-- Maps Section -->
   <MapsSection client:load />
 
-    <!-- Article Section -->
+  <!-- Article Section -->
   <ArticleSection client:load />
 
   <!-- Booklets Section -->
   <BookletSection client:load />
-
 </BaseLayout>
