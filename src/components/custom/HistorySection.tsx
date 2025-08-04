@@ -37,13 +37,11 @@ function HistorySection() {
       className="py-10 px-4 bg-gradient-to-r from-slate-50 to-blue-50 opacity-0 transform translate-y-10 transition-all duration-500"
     >
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-emerald-100 text-slate-800 rounded-full text-sm font-medium mb-4">
-            Heritage
-          </span>
-          <SectionHeading>Sejarah dan Budaya Pulau Tidung</SectionHeading>
-          <SectionSubHeading>Temukan kekayaan sejarah maritim dan warisan budaya yang membentuk identitas Pulau Tidung</SectionSubHeading>
-        </div>
+        <SectionHeading>Sejarah dan Budaya Pulau Tidung</SectionHeading>
+        <SectionSubHeading>
+          Temukan kekayaan sejarah maritim dan warisan budaya yang membentuk
+          identitas Pulau Tidung
+        </SectionSubHeading>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
