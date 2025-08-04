@@ -36,6 +36,7 @@ export const menus: Menu[] = [
   },
   {
     title: 'Booklet',
-    href: '/booklets',
+    href: '/#booklets',
+    scrollTarget: 'booklets'
   },
 ];
