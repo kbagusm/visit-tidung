@@ -1,6 +1,7 @@
 ---
 import Navbar from '@/components/custom/Navbar.astro';
 import '../styles/global.css';
+import Footer from '@/components/custom/Footer';
 const { pageTitle } = Astro.props;
 ---
 
@@ -21,6 +22,8 @@ const { pageTitle } = Astro.props;
     <Navbar />
 
     <slot />
+
+    <Footer />
   
   <script is:inline>
     document.addEventListener('DOMContentLoaded', function() {
