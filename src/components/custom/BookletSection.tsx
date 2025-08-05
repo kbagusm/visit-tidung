@@ -53,26 +53,29 @@ function BookletSection() {
 
   const booklets = [
     {
-      title: "Complete Travel Guide",
-      description: "Everything you need to know about visiting Tidung Island",
-      pages: "24 pages",
+      title: "GEMARIKAN",
+      description: "GEMARIKAN - Gemar Makan Ikan untuk meningkatkan kesadaran tentang bahaya stunting",
+      author: "M. Riski Ramadhana",
+      pages: "8 halaman",
       format: "PDF",
-      size: "5.2 MB",
-      url: "/booklets/kurikulum.pdf",
-      previewUrl: "/booklets/kurikulum.pdf"
+      size: "13.8 MB",
+      url: "/booklets/Booklet GEMARIKAN-Riski.pdf",
+      previewUrl: "/booklets/Booklet GEMARIKAN-Riski.pdf"
     },
     {
-      title: "Accommodation Directory",
-      description: "List of hotels, guesthouses, and homestays on the island",
-      pages: "16 pages",
+      title: "Laskar Laut",
+      description: "Laskar Laut - Latihan Anak Sekolah Kuasai Laut untuk tujuan penerapan zero waste pada ikan",
+      author: "M. Riski Ramadhana",
+      pages: "8 halaman",
       format: "PDF",
-      size: "3.1 MB",
-      url: "/booklets/accommodation.pdf",
-      previewUrl: "/booklets/accommodation.pdf"
+      size: "8.4 MB",
+      url: "/booklets/Booklet Laskar Laut-Riski.pdf",
+      previewUrl: "/booklets/Booklet Laskar Laut-Riski.pdf"
     },
     {
       title: "Activity Planner",
       description: "Plan your daily activities and water sports adventures",
+      author: "Riski",
       pages: "12 pages",
       format: "PDF",
       size: "2.8 MB",
@@ -82,6 +85,7 @@ function BookletSection() {
     {
       title: "Local Food Guide",
       description: "Discover the best restaurants and local culinary experiences",
+      author: "Riski",
       pages: "20 pages",
       format: "PDF",
       size: "4.5 MB",
@@ -116,12 +120,16 @@ function BookletSection() {
             >
               <div className="p-6 text-center">
                 <FileText className="h-16 w-16 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-blue-900 mb-2">{booklet.title}</h3>
+                <h3 className="text-3xl font-[karimun] text-blue-900 mb-2">{booklet.title}</h3>
                 <p className="text-gray-600 mb-4">{booklet.description}</p>
                 
                 <div className="space-y-2 text-sm text-gray-600 mb-4">
                   <div className="flex justify-between">
-                    <span>Pages:</span>
+                    <span>Penulis:</span>
+                    <span>{booklet.author}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Halaman:</span>
                     <span>{booklet.pages}</span>
                   </div>
                   <div className="flex justify-between">
@@ -129,23 +137,26 @@ function BookletSection() {
                     <span>{booklet.format}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Size:</span>
+                    <span>Ukuran:</span>
                     <span>{booklet.size}</span>
                   </div>
                 </div>
               </div>
               
               {/* Pratinjau PDF */}
-              <div className="h-48 overflow-hidden border-t border-gray-200 relative">
+              <div className="h-[400px] overflow-hidden border-t border-gray-200 relative">
                 <iframe 
                   src={`${booklet.previewUrl}#view=fitH`} 
                   className="w-full h-full"
                   frameBorder="0"
+                  style={{ transform: 'translateY(-15px)' }}
                 >
                   <p>Browser Anda tidak mendukung pratinjau PDF. Silakan <a href={booklet.url}>download file</a> untuk melihat.</p>
                 </iframe>
-                <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-15 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
               </div>
+
+
               
               <div className="p-4 bg-gray-50 flex gap-2">
                 <a 

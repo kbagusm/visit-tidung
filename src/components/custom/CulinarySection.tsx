@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -10,6 +10,12 @@ import SectionSubHeading from './SectionSubHeading';
 
 function CulinarySection() {
   const swiperRef = useRef<any>(null);
+
+  useEffect(() => {
+  if (swiperRef.current) {
+    swiperRef.current.swiper.update();
+  }
+}, []);
 
   // Data kuliner dengan path gambar yang benar
   const culinaryItems = [

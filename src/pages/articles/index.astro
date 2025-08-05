@@ -1,10 +1,16 @@
 ---
+// src/pages/articles/index.astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
 const articles = await getCollection('articles');
 const pageTitle = "Artikel Pulau Tidung";
+
+// Urutkan artikel berdasarkan tanggal terbaru
+const sortedArticles = articles.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 ---
 
 <BaseLayout {pageTitle}>
@@ -18,7 +24,7 @@ const pageTitle = "Artikel Pulau Tidung";
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {articles.map((article) => (
+        {sortedArticles.map((article) => (
           <a 
             href={`/articles/${article.slug}`} 
             class="group block h-full"
@@ -29,6 +35,8 @@ const pageTitle = "Artikel Pulau Tidung";
                   <Image
                     src={article.data.image}
                     alt={article.data.title}
+                    width={400}
+                    height={192}
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 )}

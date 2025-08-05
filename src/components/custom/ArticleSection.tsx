@@ -1,3 +1,4 @@
+// src/components/custom/ArticleSection.tsx
 import React, { useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -36,60 +37,61 @@ function ArticleSection() {
     };
   }, []);
 
+  // Artikel tetap untuk homepage
   const articles = [
     {
-      title: "Best Snorkeling Spots in Tidung Island",
-      excerpt: "Discover the most beautiful underwater locations with vibrant coral reefs and tropical fish.",
-      author: "Travel Guide Team",
-      date: "Dec 15, 2024",
+      title: "Pesona Pulau Tidung: Surga Tersembunyi di Kepulauan Seribu",
+      excerpt: "Temukan keindahan alam, kuliner khas, dan aktivitas seru di Pulau Tidung",
+      author: "Tim Explore Tidung",
+      date: "15 Des 2024",
       readTime: "5 min read",
-      image: "/images/articles/snorkeling.jpg",
-      slug: "best-snorkeling-spots" // Slug ditambahkan
+      image: "/images/articles/article1.1.jpeg",
+      slug: "pesona-pulau-tidung"
     },
     {
-      title: "A Complete Guide to Island Hopping",
-      excerpt: "Plan your perfect island hopping adventure around the Thousand Islands archipelago.",
-      author: "Adventure Writer",
-      date: "Dec 10, 2024",
-      readTime: "8 min read",
+      title: "Panduan Lengkap Island Hopping",
+      excerpt: "Rencanakan petualangan island hopping sempurna di kepulauan Seribu.",
+      author: "Penulis Petualangan",
+      date: "10 Des 2024",
+      readTime: "8 min baca",
       image: "/images/articles/island-hopping.jpg",
-      slug: "island-hopping-guide" // Slug ditambahkan
+      slug: "panduan-island-hopping"
     },
     {
-      title: "Local Culture and Traditions",
-      excerpt: "Learn about the rich cultural heritage and traditional lifestyle of Tidung Island residents.",
-      author: "Cultural Expert",
-      date: "Dec 5, 2024",
-      readTime: "6 min read",
+      title: "Budaya dan Tradisi Lokal",
+      excerpt: "Pelajari warisan budaya kaya dan gaya hidup tradisional penduduk Pulau Tidung.",
+      author: "Ahli Budaya",
+      date: "5 Des 2024",
+      readTime: "6 min baca",
       image: "/images/articles/culture.jpg",
-      slug: "local-culture-traditions" // Slug ditambahkan
+      slug: "budaya-dan-tradisi"
     },
     {
-      title: "Sustainable Tourism in Tidung",
-      excerpt: "How Tidung Island is leading the way in sustainable tourism practices.",
-      author: "Eco Traveler",
-      date: "Nov 28, 2024",
-      readTime: "7 min read",
+      title: "Pariwisata Berkelanjutan di Tidung",
+      excerpt: "Bagaimana Pulau Tidung memimpin dalam praktik pariwisata berkelanjutan.",
+      author: "Pecinta Lingkungan",
+      date: "28 Nov 2024",
+      readTime: "7 min baca",
       image: "/images/articles/sustainable-tourism.jpg",
-      slug: "sustainable-tourism" // Slug ditambahkan
+      slug: "pariwisata-berkelanjutan"
     },
     {
-      title: "Top 5 Homestays in Tidung Island",
-      excerpt: "Find the best places to stay for an authentic island experience.",
-      author: "Accommodation Expert",
-      date: "Nov 20, 2024",
-      readTime: "4 min read",
+      title: "5 Homestay Terbaik di Pulau Tidung",
+      excerpt: "Temukan tempat menginap terbaik untuk pengalaman pulau yang autentik.",
+      author: "Ahli Akomodasi",
+      date: "20 Nov 2024",
+      readTime: "4 min baca",
       image: "/images/articles/homestays.jpg",
-      slug: "top-homestays" // Slug ditambahkan
+      slug: "homestay-terbaik"
     },
     {
-      title: "Culinary Journey: Tidung's Seafood Delights",
-      excerpt: "A food lover's guide to the freshest seafood on the island.",
-      author: "Food Blogger",
-      date: "Nov 15, 2024",
-      readTime: "6 min read",
+      title: "Petualangan Kuliner: Hidangan Laut Pulau Tidung",
+      excerpt: "Panduan pecinta makanan untuk hidangan laut terfres di pulau.",
+      author: "Blogger Kuliner",
+      date: "15 Nov 2024",
+      readTime: "6 min baca",
       image: "/images/articles/seafood.jpg",
-      slug: "seafood-delights" // Slug ditambahkan
+      slug: "petualangan-kuliner"
     },
   ];
 
@@ -155,7 +157,7 @@ function ArticleSection() {
                         href={`/articles/${article.slug}`} 
                         className="text-blue-50 font-medium px-4 py-2 rounded-full transition-colors duration-200 shadow-sm bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 hover:shadow-md"
                       >
-                        Read More
+                        Baca Selengkapnya
                       </a>
                     </div>
                   </div>
@@ -184,7 +186,7 @@ function ArticleSection() {
             href="/articles" 
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium rounded-lg hover:from-cyan-600 hover:to-blue-600 hover:shadow-lg transition-all duration-300"
           >
-            View All Articles
+            Lihat Semua Artikel
           </a>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { History, Users, Calendar } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 import SectionSubHeading from './SectionSubHeading';
+import Cat1 from '@/assets/images/places/cat1.jpg';
 
 function HistorySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -43,10 +44,11 @@ function HistorySection() {
           identitas Pulau Tidung
         </SectionSubHeading>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-left">
           <div className="relative">
             <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
               <span className="text-gray-500">Sejarah Image</span>
+              <img src={Cat1.src} alt="Sejarah" className="absolute inset-0 w-full h-full object-cover rounded-xl" />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-xl" />
           </div>

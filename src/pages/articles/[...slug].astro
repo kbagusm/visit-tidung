@@ -1,5 +1,6 @@
 ---
-import { getCollection, render } from 'astro:content';
+// src/pages/articles/[...slug].astro
+import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -11,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const { Content } = await render(article);
+const { Content } = await article.render();
 const pageTitle = article.data.title;
 ---
 
@@ -24,7 +25,7 @@ const pageTitle = article.data.title;
             {article.data.featuredImage && (
               <img
                 src={article.data.featuredImage.src}
-                alt={article.data.title}
+                alt={article.data.featuredImage.alt || article.data.title}
                 class="w-full h-full object-cover"
               />
             )}
