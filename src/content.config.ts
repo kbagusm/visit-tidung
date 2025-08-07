@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 
 const places = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/contents/places' }),
@@ -10,4 +10,24 @@ const places = defineCollection({
     }),
 });
 
-export const collections = { places };
+const culinary = defineCollection({
+  loader: file('src/data/map/culinary.json'),
+  schema: z.object({
+    id: z.number(),
+    name: z.string(),
+    lat: z.number(),
+    lng: z.number(),
+  }),
+});
+
+const lodgings = defineCollection({
+  loader: file('src/data/map/lodgings.json'),
+  schema: z.object({
+    id: z.number(),
+    name: z.string(),
+    lat: z.number(),
+    lng: z.number(),
+  }),
+});
+
+export const collections = { places, culinary, lodgings };

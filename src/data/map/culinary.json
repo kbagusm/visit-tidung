@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "name": "Kedai Mamari",
+    "lat": -5.797364,
+    "lng": 106.49334
+  },
+  {
+    "id": 2,
+    "name": "Kedai Ning Mira",
+    "lat": -5.797505,
+    "lng": 106.493566
+  },
+  {
+    "id": 3,
+    "name": "Mustika Jaya",
+    "lat": -5.797903,
+    "lng": 106.494674
+  },
+  {
+    "id": 4,
+    "name": "Jajanan Wedera",
+    "lat": -5.797986,
+    "lng": 106.494931
+  },
+  {
+    "id": 5,
+    "name": "Faiz Bakery",
+    "lat": -5.798059,
+    "lng": 106.495098
+  },
+  {
+    "id": 6,
+    "name": "Kedai Rahma",
+    "lat": -5.798095,
+    "lng": 106.495204
+  },
+  {
+    "id": 7,
+    "name": "Warung Nasgor Bang Bewok",
+    "lat": -5.798291,
+    "lng": 106.495998
+  },
+  {
+    "id": 8,
+    "name": "Kedai Sahabat",
+    "lat": -5.798542,
+    "lng": 106.497032
+  },
+  {
+    "id": 9,
+    "name": "Nila Bakso",
+    "lat": -5.797691,
+    "lng": 106.496697
+  },
+  {
+    "id": 10,
+    "name": "Kedai Aliando",
+    "lat": -5.797394,
+    "lng": 106.494993
+  },
+  {
+    "id": 11,
+    "name": "Kedai Bu Dipa",
+    "lat": -5.797936,
+    "lng": 106.496078
+  },
+  {
+    "id": 12,
+    "name": "Warung Aisyah",
+    "lat": -5.798018,
+    "lng": 106.496132
+  },
+  {
+    "id": 13,
+    "name": "Warung Syakila Syamil",
+    "lat": -5.797019,
+    "lng": 106.493692
+  },
+  {
+    "id": 14,
+    "name": "Bakso Putra Solo",
+    "lat": -5.797433,
+    "lng": 106.495051
+  },
+  {
+    "id": 15,
+    "name": "Gorengan Masbro",
+    "lat": -5.799762,
+    "lng": 106.501134
+  },
+  {
+    "id": 16,
+    "name": "Warung Dela Hepa",
+    "lat": -5.79949,
+    "lng": 106.501749
+  },
+  {
+    "id": 17,
+    "name": "Warung Palupi \"Sido Mampir\"",
+    "lat": -5.799125,
+    "lng": 106.499342
+  },
+  {
+    "id": 18,
+    "name": "Warung Nasi Goreng Bang Mursin",
+    "lat": -5.799008,
+    "lng": 106.49907
+  },
+  {
+    "id": 19,
+    "name": "Putra Minang",
+    "lat": -5.798728,
+    "lng": 106.498929
+  },
+  {
+    "id": 20,
+    "name": "Warung Gorengan Bu Nursari",
+    "lat": -5.799762,
+    "lng": 106.501134
+  },
+  {
+    "id": 21,
+    "name": "Warung Sudi Mampir",
+    "lat": -5.799446,
+    "lng": 106.500349
+  },
+  {
+    "id": 22,
+    "name": "Seblak Prasmanan Nabita",
+    "lat": -5.798991,
+    "lng": 106.500526
+  }
+]

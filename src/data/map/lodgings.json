@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "name": "Tidung Village",
+    "lat": -5.79827,
+    "lng": 106.500472
+  },
+  {
+    "id": 2,
+    "name": "Penginapan Amanda dan Fawwaz",
+    "lat": -5.798699,
+    "lng": 106.497256
+  },
+  {
+    "id": 3,
+    "name": "Penginapan Samudra",
+    "lat": -5.800104,
+    "lng": 106.501678
+  },
+  {
+    "id": 4,
+    "name": "Homestay Sisca",
+    "lat": -5.80028,
+    "lng": 106.502551
+  },
+  {
+    "id": 5,
+    "name": "Puri tidung",
+    "lat": -5.801596,
+    "lng": 106.506135
+  },
+  {
+    "id": 6,
+    "name": "Mutiara Tidung",
+    "lat": -5.801658,
+    "lng": 106.506355
+  },
+  {
+    "id": 7,
+    "name": "Penginapan Sederhana Ibu Lia",
+    "lat": -5.798778,
+    "lng": 106.501349
+  },
+  {
+    "id": 8,
+    "name": "Penginapan Dewa",
+    "lat": -5.7991555,
+    "lng": 106.5023061
+  },
+  {
+    "id": 9,
+    "name": "Safari",
+    "lat": -5.799791,
+    "lng": 106.502934
+  },
+  {
+    "id": 10,
+    "name": "Homestay Salim Tijah",
+    "lat": -5.795719,
+    "lng": 106.496712
+  },
+  {
+    "id": 11,
+    "name": "Penginapan View Laut Zhadela",
+    "lat": -5.795295,
+    "lng": 106.495752
+  },
+  {
+    "id": 12,
+    "name": "Cemara 38 Cottage",
+    "lat": -5.795529,
+    "lng": 106.489225
+  },
+  {
+    "id": 13,
+    "name": "Villa Nyiur 1",
+    "lat": -5.795377,
+    "lng": 106.488994
+  },
+  {
+    "id": 14,
+    "name": "Villa Nyiur 2",
+    "lat": -5.795421,
+    "lng": 106.488749
+  },
+  {
+    "id": 15,
+    "name": "Penginapan Ibu Evy",
+    "lat": -5.795385,
+    "lng": 106.489093
+  },
+  {
+    "id": 16,
+    "name": "Homestay Cemara",
+    "lat": -5.796631,
+    "lng": 106.489902
+  },
+  {
+    "id": 17,
+    "name": "Penginapan Maat Sugandi",
+    "lat": -5.796425,
+    "lng": 106.494282
+  },
+  {
+    "id": 18,
+    "name": "Penginapan Panorama",
+    "lat": -5.7956548,
+    "lng": 106.4899283
+  },
+  {
+    "id": 19,
+    "name": "Rama Homestay",
+    "lat": -5.822583,
+    "lng": 106.555138
+  },
+  {
+    "id": 20,
+    "name": "Penginapan Pak Roni",
+    "lat": -5.822522,
+    "lng": 106.554997
+  },
+  {
+    "id": 21,
+    "name": "Penginapan Ibu Ayunah",
+    "lat": -5.822606,
+    "lng": 106.555108
+  },
+  {
+    "id": 22,
+    "name": "Penginapan Ibu Marsih",
+    "lat": -5.822675,
+    "lng": 106.555105
+  },
+  {
+    "id": 23,
+    "name": "Penginapan Ibu Asiti",
+    "lat": -5.822734,
+    "lng": 106.555082
+  },
+  {
+    "id": 24,
+    "name": "Sarimana Homestay",
+    "lat": -5.822843,
+    "lng": 106.554908
+  },
+  {
+    "id": 25,
+    "name": "Ratna Homestay",
+    "lat": -5.822560,
+    "lng": 106.554699
+  }
+]
