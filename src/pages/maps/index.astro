@@ -2,6 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Map from '@/components/custom/Map';
 import { getCollection } from 'astro:content';
+import SectionHeading from '@/components/custom/SectionHeading';
+import SectionSubHeading from '@/components/custom/SectionSubHeading';
 
 const pageTitle = 'Peta Pulau Tidung';
 
@@ -13,12 +15,8 @@ const lodgings = await getCollection('lodgings');
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
-          Peta Interaktif Pulau Tidung
-        </h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Temukan lokasi wisata, kuliner, dan akomodasi di Pulau Tidung
-        </p>
+        <SectionHeading>Peta Interaktif Pulau Tidung</SectionHeading>
+        <SectionSubHeading>Temukan lokasi kuliner UMKM dan penginapan di Pulau Tidung</SectionSubHeading>
       </div>
 
       <Map client:only culinary={culinary} lodgings={lodgings} />
