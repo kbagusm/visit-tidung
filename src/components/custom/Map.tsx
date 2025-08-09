@@ -7,6 +7,7 @@ import {
   TileLayer,
 } from 'react-leaflet';
 import type { CollectionEntry } from 'astro:content';
+import 'leaflet/dist/leaflet.css';
 
 type Props = {
   culinary: CollectionEntry<'culinary'>[];
