@@ -33,6 +33,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { Badge } from '../ui/badge';
 
 type Props = {
   culinary: CollectionEntry<'culinary'>[];
@@ -88,19 +89,25 @@ function Map({ culinary, lodgings }: Props) {
         {selectedPlace !== null ? (
           selectedPlace.collection === 'culinary' ? (
             // Culinary
-            <div>
+            <>
+              <div className="text-center mb-1">
+                <Badge variant="lightOrange">Kuliner UMKM</Badge>
+              </div>
               <h3 className="text-lg font-semibold text-center">
                 {selectedPlace.data.name}
               </h3>
               <div className="mt-3">
                 <h4 className="text-md font-semibold mb-3">Daftar Menu</h4>
-                {selectedPlace.data.products && selectedPlace.data.products.length > 0 ? (
+                {selectedPlace.data.products &&
+                selectedPlace.data.products.length > 0 ? (
                   <ul className="space-y-2">
                     {selectedPlace.data.products.map((product) => (
                       <li key={product.id} className="flex justify-between">
-                        <span className='text-gray-600'>{product.name}</span>
+                        <span className="text-gray-600">{product.name}</span>
                         <span className="text-gray-600">
-                          {product.price ? `Rp${product.price}` : 'Harga tidak diketahui'}
+                          {product.price
+                            ? `Rp${product.price}`
+                            : 'Harga tidak diketahui'}
                         </span>
                       </li>
                     ))}
@@ -109,14 +116,18 @@ function Map({ culinary, lodgings }: Props) {
                   <p className="text-gray-600">Tidak ada produk tersedia</p>
                 )}
               </div>
-            </div>
+            </>
           ) : (
             // Lodging
-            <div>
+            <>
+              <div className="text-center mb-1">
+                <Badge variant="lightBlue">Penginapan</Badge>
+              </div>
               <h3 className="text-lg font-semibold text-center mb-3">
                 {selectedPlace.data.name}
               </h3>
-              {selectedPlace.data.images && selectedPlace.data.images.length > 0 ? (
+              {selectedPlace.data.images &&
+              selectedPlace.data.images.length > 0 ? (
                 <Carousel>
                   <CarouselContent>
                     {selectedPlace.data.images.map((image, index) => (
@@ -133,9 +144,8 @@ function Map({ culinary, lodgings }: Props) {
                   <CarouselNext className="right-1" />
                 </Carousel>
               ) : (
-                <div className='bg-gray-200 p-4 rounded-sm text-center'>
-                  <p className='text-gray-700'>Tidak ada gambar</p>
-
+                <div className="bg-gray-200 p-4 rounded-sm text-center">
+                  <p className="text-gray-700">Tidak ada gambar</p>
                 </div>
               )}
               <div className="mt-3 grid gap-4">
@@ -245,7 +255,7 @@ function Map({ culinary, lodgings }: Props) {
                   </p>
                 </div>
               </div>
-            </div>
+            </>
           )
         ) : (
           <div className="flex justify-center items-center h-full text-center text-gray-700">
