@@ -15,25 +15,8 @@ import 'react-leaflet-markercluster/styles';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
 import { useMemo, useState } from 'react';
-import {
-  Armchair,
-  Banknote,
-  Bath,
-  House,
-  MapPin,
-  Notebook,
-  Phone,
-  ScrollText,
-  Users,
-} from 'lucide-react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import { Badge } from '../ui/badge';
+import CulinaryDetail from './CulinaryDetail';
+import LodgingDetail from './LodgingDetail';
 
 type Props = {
   culinary: CollectionEntry<'culinary'>[];
@@ -89,173 +72,10 @@ function Map({ culinary, lodgings }: Props) {
         {selectedPlace !== null ? (
           selectedPlace.collection === 'culinary' ? (
             // Culinary
-            <>
-              <div className="text-center mb-1">
-                <Badge variant="lightOrange">Kuliner UMKM</Badge>
-              </div>
-              <h3 className="text-lg font-semibold text-center">
-                {selectedPlace.data.name}
-              </h3>
-              <div className="mt-3">
-                <h4 className="text-md font-semibold mb-3">Daftar Menu</h4>
-                {selectedPlace.data.products &&
-                selectedPlace.data.products.length > 0 ? (
-                  <ul className="space-y-2">
-                    {selectedPlace.data.products.map((product) => (
-                      <li key={product.id} className="flex justify-between">
-                        <span className="text-gray-600">{product.name}</span>
-                        <span className="text-gray-600">
-                          {product.price
-                            ? `Rp${product.price}`
-                            : 'Harga tidak diketahui'}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-gray-600">Tidak ada produk tersedia</p>
-                )}
-              </div>
-            </>
+            <CulinaryDetail culinary={selectedPlace} />
           ) : (
             // Lodging
-            <>
-              <div className="text-center mb-1">
-                <Badge variant="lightBlue">Penginapan</Badge>
-              </div>
-              <h3 className="text-lg font-semibold text-center mb-3">
-                {selectedPlace.data.name}
-              </h3>
-              {selectedPlace.data.images &&
-              selectedPlace.data.images.length > 0 ? (
-                <Carousel>
-                  <CarouselContent>
-                    {selectedPlace.data.images.map((image, index) => (
-                      <CarouselItem key={index} className="max-h-64">
-                        <img
-                          src={image.src}
-                          alt={`${selectedPlace.data.name} ${index + 1}`}
-                          className="object-cover rounded-lg w-full h-full"
-                        />
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="left-1" />
-                  <CarouselNext className="right-1" />
-                </Carousel>
-              ) : (
-                <div className="bg-gray-200 p-4 rounded-sm text-center">
-                  <p className="text-gray-700">Tidak ada gambar</p>
-                </div>
-              )}
-              <div className="mt-3 grid gap-4">
-                {/* Address */}
-                <div>
-                  <p className="text-sm text-gray-600 font-semibold flex gap-2 items-center">
-                    <MapPin size={18} /> Alamat
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {selectedPlace.data.address ?? '-'}
-                  </p>
-                </div>
-
-                {/* Type */}
-                <div>
-                  <p className="text-sm text-gray-600 font-semibold flex gap-2 items-center">
-                    <House size={18} /> Tipe
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {selectedPlace.data.type ?? '-'}
-                  </p>
-                </div>
-
-                {/* Capacity */}
-                <div>
-                  <p className="text-sm text-gray-600 font-semibold flex gap-2 items-center">
-                    <Users size={18} /> Kapasitas
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {selectedPlace.data.capacity
-                      ? selectedPlace.data.capacity + ' orang'
-                      : '-'}
-                  </p>
-                </div>
-
-                {/* Price */}
-                <div>
-                  <p className="text-sm text-gray-600 font-semibold flex gap-2 items-center">
-                    <Banknote size={18} /> Harga
-                  </p>
-                  {selectedPlace.data.lowerPrice &&
-                  selectedPlace.data.upperPrice ? (
-                    <p className="text-sm text-gray-600">
-                      {selectedPlace.data.lowerPrice ===
-                      selectedPlace.data.upperPrice
-                        ? 'Rp' +
-                          selectedPlace.data.lowerPrice.toLocaleString('id')
-                        : 'Rp' +
-                          selectedPlace.data.lowerPrice.toLocaleString('id') +
-                          '—' +
-                          'Rp' +
-                          selectedPlace.data.upperPrice.toLocaleString('id')}
-                    </p>
-                  ) : (
-                    <p className="text-sm text-gray-600">Tidak diketahui</p>
-                  )}
-                </div>
-
-                {/* Bathroom Type */}
-                <div>
-                  <p className="text-sm text-gray-600 font-semibold flex gap-2 items-center">
-                    <Bath size={18} /> Tipe Kamar Mandi
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {selectedPlace.data.bathroomType ?? '-'}
-                  </p>
-                </div>
-
-                {/* Facilities */}
-                <div>
-                  <p className="text-sm text-gray-600 font-semibold flex gap-2 items-center">
-                    <Armchair size={18} /> Fasilitas
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    <ul className="grid grid-cols-2 gap-1">
-                      {selectedPlace.data.facilities &&
-                      selectedPlace.data.facilities.length > 0 ? (
-                        selectedPlace.data.facilities.map((facility, index) => (
-                          <li key={index} className="list-disc list-inside">
-                            {facility}
-                          </li>
-                        ))
-                      ) : (
-                        <li className="list-disc list-inside">-</li>
-                      )}
-                    </ul>
-                  </p>
-                </div>
-
-                {/* Note */}
-                <div>
-                  <p className="text-sm text-gray-600 font-semibold flex gap-2 items-center">
-                    <ScrollText size={18} /> Catatan
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {selectedPlace.data.note ?? '-'}
-                  </p>
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <p className="text-sm text-gray-600 font-semibold flex gap-2 items-center">
-                    <Phone size={18} /> Telepon/WA
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {selectedPlace.data.phone ?? '-'}
-                  </p>
-                </div>
-              </div>
-            </>
+            <LodgingDetail lodging={selectedPlace} />
           )
         ) : (
           <div className="flex justify-center items-center h-full text-center text-gray-700">
@@ -263,6 +83,8 @@ function Map({ culinary, lodgings }: Props) {
           </div>
         )}
       </div>
+
+      {/* Map */}
       <div
         className={`h-[600px] w-full shadow-md rounded-xl overflow-hidden md:col-span-8`}
       >
