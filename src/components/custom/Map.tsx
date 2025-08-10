@@ -17,7 +17,14 @@ import L from 'leaflet';
 import { useEffect, useMemo, useState } from 'react';
 import CulinaryDetail from './CulinaryDetail';
 import LodgingDetail from './LodgingDetail';
-import { Drawer, DrawerClose, DrawerContent } from '@/components/ui/drawer';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+} from '@/components/ui/drawer';
 import { Button } from '../ui/button';
 
 type Props = {
@@ -97,6 +104,10 @@ function Map({ culinary, lodgings }: Props) {
       {/* Mobile Drawer */}
       <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
         <DrawerContent>
+          <DrawerHeader className='hidden'>
+            <DrawerTitle></DrawerTitle>
+            <DrawerDescription></DrawerDescription>
+          </DrawerHeader>
           <div className="p-4 overflow-y-auto">
             {selectedPlace?.collection === 'culinary' ? (
               <CulinaryDetail culinary={selectedPlace} />
@@ -143,10 +154,12 @@ function Map({ culinary, lodgings }: Props) {
                       eventHandlers={{
                         click: () => {
                           setSelectedPlace(place);
+                          if (window.innerWidth < 768) {
+                            setDrawerOpen(true);
+                          }
                         },
                       }}
                     >
-                      <Popup>{place.data.name}</Popup>
                     </Marker>
                   ))}
                 </MarkerClusterGroup>
@@ -169,10 +182,12 @@ function Map({ culinary, lodgings }: Props) {
                       eventHandlers={{
                         click: () => {
                           setSelectedPlace(place);
+                          if (window.innerWidth < 768) {
+                            setDrawerOpen(true);
+                          }
                         },
                       }}
                     >
-                      <Popup>{place.data.name}</Popup>
                     </Marker>
                   ))}
                 </MarkerClusterGroup>

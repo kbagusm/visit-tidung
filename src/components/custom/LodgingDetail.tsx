@@ -114,7 +114,7 @@ export default function LodgingDetail({ lodging }: Props) {
           <p className="text-sm text-gray-600 font-semibold flex gap-2 items-center">
             <Armchair size={18} /> Fasilitas
           </p>
-          <p className="text-sm text-gray-600">
+          <div className="text-sm text-gray-600">
             <ul className="grid grid-cols-2 gap-1">
               {lodging.data.facilities && lodging.data.facilities.length > 0 ? (
                 lodging.data.facilities.map((facility, index) => (
@@ -126,7 +126,7 @@ export default function LodgingDetail({ lodging }: Props) {
                 <li className="list-disc list-inside">-</li>
               )}
             </ul>
-          </p>
+          </div>
         </div>
 
         {/* Note */}
