@@ -38,6 +38,9 @@
   {
     "id": 7,
     "name": "Warung Nasgor Bang Bewok",
+    "price": "Rp10.000 - Rp20.000",
+    "operational": "08.00 - 22.00",
+    "facility": "ESSSS",
     "lat": -5.798291,
     "lng": 106.495998
   },
@@ -130,5 +133,12 @@
     "name": "Seblak Prasmanan Nabita",
     "lat": -5.798991,
     "lng": 106.500526
+  },
+  {
+    "id": 23,
+    "name": "Jajanan Kedai Hibban",
+    "lat": -5.79779,
+    "lng": 106.498262,
+    "menu": "Lumpia Sayur, Burger, Robak, Seafood Bakar, Sostel, Es teler, Es jelly creamy,Fanta susu, Es poci"
   }
 ]

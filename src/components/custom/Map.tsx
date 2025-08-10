@@ -31,7 +31,13 @@ function Map({ culinary, lodgings }: Props) {
             <LayerGroup >
               {culinary.map((place) => (
                 <Marker key={`${place.data.id}`} position={[place.data.lat, place.data.lng]} >
-                  <Popup>{place.data.name}</Popup>
+                  <Popup><div>
+                    <strong>{place.data.name}</strong>
+                    <p>{place.data.operational}</p>
+                    <p>{place.data.price}</p>
+                    <p>{place.data.facility}</p>
+                    <p>{place.data.menu}</p>
+                  </div></Popup>
                 </Marker>
               ))}
             </LayerGroup>
@@ -41,7 +47,12 @@ function Map({ culinary, lodgings }: Props) {
             <LayerGroup>
               {lodgings.map((place) => (
                 <Marker key={`${place.data.id}`} position={[place.data.lat, place.data.lng]}>
-                  <Popup>{place.data.name}</Popup>
+                  <Popup><div>
+                    <strong>{place.data.name}</strong>
+                    <p>{place.data.operational}</p>
+                    <p>{place.data.price}</p>
+                    <p>{place.data.facility}</p>
+                  </div></Popup>
                 </Marker>
               ))}
             </LayerGroup>
