@@ -86,8 +86,8 @@
   {
     "id": 15,
     "name": "Gorengan Masbro",
-    "lat": -5.799762,
-    "lng": 106.501134
+    "lat": -5.80019,
+    "lng": 106.502636
   },
   {
     "id": 16,
@@ -116,8 +116,8 @@
   {
     "id": 20,
     "name": "Warung Gorengan Bu Nursari",
-    "lat": -5.799962,
-    "lng": 106.501334
+    "lat": -5.799762,
+    "lng": 106.501134
   },
   {
     "id": 21,
@@ -130,5 +130,29 @@
     "name": "Seblak Prasmanan Nabita",
     "lat": -5.798991,
     "lng": 106.500526
+  },
+  {
+    "id": 23,
+    "name": "Jajanan Kedai Hibban",
+    "lat": -5.79779,
+    "lng": 106.498262
+  },
+  {
+    "id": 24,
+    "name": "Nasi Uduk Bu Suharti",
+    "lat": -5.797862,
+    "lng": 106.498377
+  },
+  {
+    "id": 25,
+    "name": "Warung Ibu Sopiyah",
+    "lat": -5.799287,
+    "lng": 106.499491
+  },
+  {
+    "id": 26,
+    "name": "Nasi Uduk Ibu Mulyadewi",
+    "lat": -5.798803,
+    "lng": 106.498154
   }
 ]

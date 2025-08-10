@@ -13,10 +13,12 @@ const lodgings = await getCollection('lodgings');
 
 <BaseLayout {pageTitle}>
   <section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
+    <div class="px-4">
       <div class="text-center mb-16">
         <SectionHeading>Peta Interaktif Pulau Tidung</SectionHeading>
-        <SectionSubHeading>Temukan lokasi kuliner UMKM dan penginapan di Pulau Tidung</SectionSubHeading>
+        <SectionSubHeading
+          >Temukan lokasi kuliner UMKM dan penginapan di Pulau Tidung</SectionSubHeading
+        >
       </div>
 
       <Map client:only culinary={culinary} lodgings={lodgings} />
