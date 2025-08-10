@@ -22,46 +22,6 @@ const lodgings = await getCollection('lodgings');
       </div>
 
       <Map client:only culinary={culinary} lodgings={lodgings} />
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-        <div class="bg-gradient-to-br from-blue-50 to-teal-50 p-6 rounded-xl">
-          <h2 class="text-2xl font-bold text-blue-900 mb-4">Legenda Peta</h2>
-          <ul class="space-y-3">
-            <li class="flex items-center">
-              <div class="w-6 h-6 bg-blue-500 rounded-full mr-3"></div>
-              <span class="text-gray-700">Wisata Alam</span>
-            </li>
-            <li class="flex items-center">
-              <div class="w-6 h-6 bg-green-500 rounded-full mr-3"></div>
-              <span class="text-gray-700">Wisata Bahari</span>
-            </li>
-            <li class="flex items-center">
-              <div class="w-6 h-6 bg-yellow-500 rounded-full mr-3"></div>
-              <span class="text-gray-700">Kuliner</span>
-            </li>
-            <li class="flex items-center">
-              <div class="w-6 h-6 bg-red-500 rounded-full mr-3"></div>
-              <span class="text-gray-700">Akomodasi</span>
-            </li>
-          </ul>
-        </div>
-
-        <div
-          class="md:col-span-2 bg-gradient-to-br from-slate-50 to-blue-50 p-6 rounded-xl"
-        >
-          <h2 class="text-2xl font-bold text-blue-900 mb-4">Navigasi Pulau</h2>
-          <p class="text-gray-700 mb-4">
-            Pulau Tidung terbagi menjadi dua bagian utama: Tidung Besar dan
-            Tidung Kecil. Gunakan peta interaktif ini untuk:
-          </p>
-          <ul class="list-disc pl-5 space-y-2 text-gray-700">
-            <li>Mencari rute tercepat ke destinasi wisata</li>
-            <li>Menemukan tempat makan terdekat</li>
-            <li>Melihat lokasi penginapan dan homestay</li>
-            <li>Mengidentifikasi fasilitas umum</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 </BaseLayout>
