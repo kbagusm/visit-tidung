@@ -14,9 +14,11 @@ import LodgingMarker from '@/assets/images/map-icons/lodging-marker.png';
 import 'react-leaflet-markercluster/styles';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import CulinaryDetail from './CulinaryDetail';
 import LodgingDetail from './LodgingDetail';
+import { Drawer, DrawerClose, DrawerContent } from '@/components/ui/drawer';
+import { Button } from '../ui/button';
 
 type Props = {
   culinary: CollectionEntry<'culinary'>[];
@@ -47,6 +49,14 @@ function Map({ culinary, lodgings }: Props) {
   const [selectedPlace, setSelectedPlace] = useState<null | CollectionEntry<
     'culinary' | 'lodgings'
   >>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  // Auto-open drawer when place is selected on mobile
+  useEffect(() => {
+    if (selectedPlace && window.innerWidth < 768) {
+      setDrawerOpen(true);
+    }
+  }, [selectedPlace]);
 
   // Create cluster icons
   const createCulinaryClusterIcon = (cluster: any) => {
@@ -68,7 +78,7 @@ function Map({ culinary, lodgings }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
       {/* Sidebar */}
-      <div className="h-[600px] overflow-y-scroll bg-gradient-to-br from-blue-50 to-teal-50 py-3 px-6 rounded-xl md:col-span-4">
+      <div className="h-[600px] overflow-y-scroll bg-gradient-to-br from-blue-50 to-teal-50 py-3 px-6 rounded-xl md:col-span-4 hidden md:block">
         {selectedPlace !== null ? (
           selectedPlace.collection === 'culinary' ? (
             // Culinary
@@ -83,6 +93,24 @@ function Map({ culinary, lodgings }: Props) {
           </div>
         )}
       </div>
+
+      {/* Mobile Drawer */}
+      <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
+        <DrawerContent>
+          <div className="p-4 overflow-y-auto">
+            {selectedPlace?.collection === 'culinary' ? (
+              <CulinaryDetail culinary={selectedPlace} />
+            ) : selectedPlace?.collection === 'lodgings' ? (
+              <LodgingDetail lodging={selectedPlace} />
+            ) : null}
+          </div>
+          <DrawerClose asChild>
+            <Button variant="outline" className="m-4">
+              Tutup
+            </Button>
+          </DrawerClose>
+        </DrawerContent>
+      </Drawer>
 
       {/* Map */}
       <div
