@@ -17,6 +17,11 @@ const culinary = defineCollection({
     name: z.string(),
     lat: z.number(),
     lng: z.number(),
+    products: z.array(z.object({
+      id: z.number(),
+      name: z.string(),
+      price: z.string().optional(),
+    }))
   }),
 });
 
