@@ -53,10 +53,13 @@ function Map({ culinary, lodgings }: Props) {
     []
   );
 
+  // State
   const [selectedPlace, setSelectedPlace] = useState<null | CollectionEntry<
     'culinary' | 'lodgings'
   >>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [mapLoading, setMapLoading] = useState(true);
+
 
   // Auto-open drawer when place is selected on mobile
   useEffect(() => {
@@ -83,27 +86,97 @@ function Map({ culinary, lodgings }: Props) {
   };
 
   return (
-    <div className="h-[600px] border-2 rounded-xl overflow-hidden relative">
-      <MapContainer
-        className="h-full w-full z-10"
-        center={[-5.798777, 106.504525]}
-        zoom={15}
-        scrollWheelZoom={true}
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+      {/* Sidebar */}
+      <div className="h-[600px] overflow-y-scroll bg-gradient-to-br from-blue-50 to-teal-50 py-3 px-6 rounded-xl md:col-span-4 hidden md:block">
+        {selectedPlace !== null ? (
+          selectedPlace.collection === 'culinary' ? (
+            // Culinary
+            <CulinaryDetail culinary={selectedPlace} />
+          ) : (
+            // Lodging
+            <LodgingDetail lodging={selectedPlace} />
+          )
+        ) : (
+          <div className="flex justify-center items-center h-full text-center text-gray-700">
+            <p>Pilih tempat untuk melihat detailnya</p>
+          </div>
+        )}
+      </div>
+
+      {/* Mobile Drawer */}
+      <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
+        <DrawerContent>
+          <DrawerHeader className='hidden'>
+            <DrawerTitle></DrawerTitle>
+            <DrawerDescription></DrawerDescription>
+          </DrawerHeader>
+          <div className="p-4 overflow-y-auto">
+            {selectedPlace?.collection === 'culinary' ? (
+              <CulinaryDetail culinary={selectedPlace} />
+            ) : selectedPlace?.collection === 'lodgings' ? (
+              <LodgingDetail lodging={selectedPlace} />
+            ) : null}
+          </div>
+          <DrawerClose asChild>
+            <Button variant="outline" className="m-4">
+              Tutup
+            </Button>
+          </DrawerClose>
+        </DrawerContent>
+      </Drawer>
+
+      {/* Map */}
+      <div
+        className={`h-[600px] w-full shadow-md rounded-xl overflow-hidden md:col-span-8`}
       >
-        <TileLayer
-          attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <LayersControl position="topright">
-          <LayersControl.Overlay name="UMKM Kuliner" checked>
-            <LayerGroup >
-              {culinary.map((place) => (
-                <Marker key={`${place.data.id}`} position={[place.data.lat, place.data.lng]} >
-                  <Popup>{place.data.name}</Popup>
-                </Marker>
-              ))}
-            </LayerGroup>
-          </LayersControl.Overlay>
+        {mapLoading && (
+          <div className="flex items-center justify-center h-full w-full bg-white/80 z-50">
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+          </div>
+        )}
+
+        <MapContainer
+          className="h-full w-full z-10"
+          center={[-5.798777, 106.504525]}
+          zoom={15}
+          scrollWheelZoom={true}
+        >
+          <TileLayer
+            attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            eventHandlers={{
+              load: () => setMapLoading(false), // all tiles loaded
+            }}
+          />
+          <LayersControl position="topright">
+            <LayersControl.Overlay name="UMKM Kuliner" checked>
+              <LayerGroup>
+                <MarkerClusterGroup
+                  iconCreateFunction={createCulinaryClusterIcon}
+                  disableClusteringAtZoom={18}
+                  showCoverageOnHover={false}
+                  spiderfyOnMaxZoom={false}
+                >
+                  {culinary.map((place) => (
+                    <Marker
+                      key={`${place.data.id}`}
+                      position={[place.data.lat, place.data.lng]}
+                      icon={CulinaryIcon}
+                      eventHandlers={{
+                        click: () => {
+                          setSelectedPlace(place);
+                          if (window.innerWidth < 768) {
+                            setDrawerOpen(true);
+                          }
+                        },
+                      }}
+                    >
+                    </Marker>
+                  ))}
+                </MarkerClusterGroup>
+              </LayerGroup>
+            </LayersControl.Overlay>
 
           <LayersControl.Overlay name="Penginapan" checked>
             <LayerGroup>
