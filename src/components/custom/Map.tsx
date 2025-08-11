@@ -60,7 +60,6 @@ function Map({ culinary, lodgings }: Props) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mapLoading, setMapLoading] = useState(true);
 
-
   // Auto-open drawer when place is selected on mobile
   useEffect(() => {
     if (selectedPlace && window.innerWidth < 768) {
@@ -178,17 +177,36 @@ function Map({ culinary, lodgings }: Props) {
               </LayerGroup>
             </LayersControl.Overlay>
 
-          <LayersControl.Overlay name="Penginapan" checked>
-            <LayerGroup>
-              {lodgings.map((place) => (
-                <Marker key={`${place.data.id}`} position={[place.data.lat, place.data.lng]}>
-                  <Popup>{place.data.name}</Popup>
-                </Marker>
-              ))}
-            </LayerGroup>
-          </LayersControl.Overlay>
-        </LayersControl>
-      </MapContainer>
+            <LayersControl.Overlay name="Penginapan" checked>
+              <LayerGroup>
+                <MarkerClusterGroup
+                  iconCreateFunction={createLodgingClusterIcon}
+                  disableClusteringAtZoom={18}
+                  showCoverageOnHover={false}
+                  spiderfyOnMaxZoom={false}
+                >
+                  {lodgings.map((place) => (
+                    <Marker
+                      key={`${place.data.id}`}
+                      position={[place.data.lat, place.data.lng]}
+                      icon={LodgingIcon}
+                      eventHandlers={{
+                        click: () => {
+                          setSelectedPlace(place);
+                          if (window.innerWidth < 768) {
+                            setDrawerOpen(true);
+                          }
+                        },
+                      }}
+                    >
+                    </Marker>
+                  ))}
+                </MarkerClusterGroup>
+              </LayerGroup>
+            </LayersControl.Overlay>
+          </LayersControl>
+        </MapContainer>
+      </div>
     </div>
   );
 }
