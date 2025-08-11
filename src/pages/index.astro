@@ -11,8 +11,9 @@ import PlacesSection from '@/components/custom/PlacesSection';
 
 // Ambil data tempat wisata
 const places = await getCollection('places');
-// Ambil 6 tempat pertama untuk ditampilkan di homepage
-const featuredPlaces = places.slice(0, 6);
+// Ambil 3 tempat pertama untuk ditampilkan di homepage
+const featuredPlaces = places.slice(0, 3);
+featuredPlaces.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <BaseLayout pageTitle="Visit Tidung">
@@ -50,7 +51,8 @@ const featuredPlaces = places.slice(0, 6);
     </div>
   </header>
 
-  <PlacesSection client:load />
+  <!-- <PlacesSection client:load /> -->
+  <PlacesSection client:load places={featuredPlaces} />
 
   <!-- Culinary Section -->
   <CulinarySection client:load />

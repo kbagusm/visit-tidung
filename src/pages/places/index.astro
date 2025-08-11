@@ -12,10 +12,12 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
 const places = await getCollection('places');
+// Sort places by title
+places.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <BaseLayout pageTitle="Places - AzBagas">
-  <section class="bg-background px-3">
+  <section class="bg-background px-3 mb-24">
     <h1 class="text-4xl text-center mt-10 font-[Karimun] text-primary">
       Tempat Wisata di Pulau Tidung
     </h1>

@@ -7,6 +7,8 @@ const places = defineCollection({
     z.object({
       title: z.string(),
       featuredImage: image(),
+      description: z.string(),
+      photos: z.array(image()).optional(),
     }),
 });
 
