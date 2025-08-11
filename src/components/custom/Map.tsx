@@ -53,10 +53,13 @@ function Map({ culinary, lodgings }: Props) {
     []
   );
 
+  // State
   const [selectedPlace, setSelectedPlace] = useState<null | CollectionEntry<
     'culinary' | 'lodgings'
   >>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [mapLoading, setMapLoading] = useState(true);
+
 
   // Auto-open drawer when place is selected on mobile
   useEffect(() => {
@@ -127,6 +130,12 @@ function Map({ culinary, lodgings }: Props) {
       <div
         className={`h-[600px] w-full shadow-md rounded-xl overflow-hidden md:col-span-8`}
       >
+        {mapLoading && (
+          <div className="flex items-center justify-center h-full w-full bg-white/80 z-50">
+            <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+          </div>
+        )}
+
         <MapContainer
           className="h-full w-full z-10"
           center={[-5.798777, 106.504525]}
@@ -136,6 +145,9 @@ function Map({ culinary, lodgings }: Props) {
           <TileLayer
             attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            eventHandlers={{
+              load: () => setMapLoading(false), // all tiles loaded
+            }}
           />
           <LayersControl position="topright">
             <LayersControl.Overlay name="UMKM Kuliner" checked>
