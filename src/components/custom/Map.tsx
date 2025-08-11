@@ -12,6 +12,7 @@ import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
 import CulinaryMarker from '@/assets/images/map-icons/culinary-marker.png';
 import LodgingMarker from '@/assets/images/map-icons/lodging-marker.png';
+import ActiveMarker from '@/assets/images/map-icons/active-marker.png';
 import 'react-leaflet-markercluster/styles';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import L from 'leaflet';
@@ -49,6 +50,16 @@ function Map({ culinary, lodgings }: Props) {
       new Icon({
         iconUrl: LodgingMarker.src,
         iconSize: [44, 44],
+        iconAnchor: [22, 44],
+      }),
+    []
+  );
+
+  const ActiveIcon = useMemo(
+    () =>
+      new Icon({
+        iconUrl: ActiveMarker.src,
+        iconSize: [44, 48],
         iconAnchor: [22, 44],
       }),
     []
@@ -136,10 +147,7 @@ function Map({ culinary, lodgings }: Props) {
           </div>
         )}
 
-        <MapContainer
-          className="h-full w-full z-10"
-          scrollWheelZoom={true}
-        >
+        <MapContainer className="h-full w-full z-10" scrollWheelZoom={true}>
           <TileLayer
             attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -150,6 +158,9 @@ function Map({ culinary, lodgings }: Props) {
 
           {/* Automatically fit to bounds */}
           <FitBounds culinary={culinary} lodgings={lodgings} />
+
+          {/* Center when marker clicked */}
+          <MapController selectedPlace={selectedPlace} />
 
           <LayersControl position="topright">
             <LayersControl.Overlay name="UMKM Kuliner" checked>
@@ -164,7 +175,13 @@ function Map({ culinary, lodgings }: Props) {
                     <Marker
                       key={`${place.data.id}`}
                       position={[place.data.lat, place.data.lng]}
-                      icon={CulinaryIcon}
+                      icon={
+                        selectedPlace !== null &&
+                        selectedPlace.data.lat === place.data.lat &&
+                        selectedPlace.data.lng === place.data.lng
+                          ? ActiveIcon
+                          : CulinaryIcon
+                      }
                       eventHandlers={{
                         click: () => {
                           setSelectedPlace(place);
@@ -191,7 +208,13 @@ function Map({ culinary, lodgings }: Props) {
                     <Marker
                       key={`${place.data.id}`}
                       position={[place.data.lat, place.data.lng]}
-                      icon={LodgingIcon}
+                      icon={
+                        selectedPlace !== null &&
+                        selectedPlace.data.lat === place.data.lat &&
+                        selectedPlace.data.lng === place.data.lng
+                          ? ActiveIcon
+                          : LodgingIcon
+                      }
                       eventHandlers={{
                         click: () => {
                           setSelectedPlace(place);
@@ -212,7 +235,10 @@ function Map({ culinary, lodgings }: Props) {
   );
 }
 
-function FitBounds({ culinary, lodgings }: {
+function FitBounds({
+  culinary,
+  lodgings,
+}: {
   culinary: CollectionEntry<'culinary'>[];
   lodgings: CollectionEntry<'lodgings'>[];
 }) {
@@ -237,6 +263,22 @@ function FitBounds({ culinary, lodgings }: {
   }, [culinary, lodgings, map]);
 
   return null; // This component doesn't render anything visible
+}
+
+function MapController({
+  selectedPlace,
+}: {
+  selectedPlace: null | CollectionEntry<'culinary' | 'lodgings'>;
+}) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (selectedPlace) {
+      map.setView([selectedPlace.data.lat, selectedPlace.data.lng], 18);
+    }
+  }, [selectedPlace, map]);
+
+  return null;
 }
 
 export default Map;
