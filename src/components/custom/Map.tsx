@@ -7,6 +7,25 @@ import {
   TileLayer,
 } from 'react-leaflet';
 import type { CollectionEntry } from 'astro:content';
+import 'leaflet/dist/leaflet.css';
+import { Icon } from 'leaflet';
+import CulinaryMarker from '@/assets/images/map-icons/culinary-marker.png';
+import LodgingMarker from '@/assets/images/map-icons/lodging-marker.png';
+import 'react-leaflet-markercluster/styles';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
+import L from 'leaflet';
+import { useEffect, useMemo, useState } from 'react';
+import CulinaryDetail from './CulinaryDetail';
+import LodgingDetail from './LodgingDetail';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+} from '@/components/ui/drawer';
+import { Button } from '../ui/button';
 
 type Props = {
   culinary: CollectionEntry<'culinary'>[];
@@ -14,6 +33,55 @@ type Props = {
 };
 
 function Map({ culinary, lodgings }: Props) {
+  const CulinaryIcon = useMemo(
+    () =>
+      new Icon({
+        iconUrl: CulinaryMarker.src,
+        iconSize: [44, 44],
+        iconAnchor: [22, 44],
+      }),
+    []
+  );
+
+  const LodgingIcon = useMemo(
+    () =>
+      new Icon({
+        iconUrl: LodgingMarker.src,
+        iconSize: [44, 44],
+        iconAnchor: [22, 44],
+      }),
+    []
+  );
+
+  const [selectedPlace, setSelectedPlace] = useState<null | CollectionEntry<
+    'culinary' | 'lodgings'
+  >>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  // Auto-open drawer when place is selected on mobile
+  useEffect(() => {
+    if (selectedPlace && window.innerWidth < 768) {
+      setDrawerOpen(true);
+    }
+  }, [selectedPlace]);
+
+  // Create cluster icons
+  const createCulinaryClusterIcon = (cluster: any) => {
+    return L.divIcon({
+      html: `<div style="background-color:rgba(255,140,0,0.8);border-radius:50%;color:black;display:flex;align-items:center;justify-content:center;width:38px;height:38px;"><span style="font-size:14px;">${cluster.getChildCount()}</span></div>`,
+      className: 'culinary-cluster-icon',
+      iconSize: L.point(44, 44, true),
+    });
+  };
+
+  const createLodgingClusterIcon = (cluster: any) => {
+    return L.divIcon({
+      html: `<div style="background-color:rgba(0,123,255,0.8);border-radius:50%;color:black;display:flex;align-items:center;justify-content:center;width:38px;height:38px;"><span style="font-size:14px;">${cluster.getChildCount()}</span></div>`,
+      className: 'lodging-cluster-icon',
+      iconSize: L.point(44, 44, true),
+    });
+  };
+
   return (
     <div className="h-[600px] border-2 rounded-xl overflow-hidden relative">
       <MapContainer
@@ -31,13 +99,7 @@ function Map({ culinary, lodgings }: Props) {
             <LayerGroup >
               {culinary.map((place) => (
                 <Marker key={`${place.data.id}`} position={[place.data.lat, place.data.lng]} >
-                  <Popup><div>
-                    <strong>{place.data.name}</strong>
-                    <p>{place.data.operational}</p>
-                    <p>{place.data.price}</p>
-                    <p>{place.data.facility}</p>
-                    <p>{place.data.menu}</p>
-                  </div></Popup>
+                  <Popup>{place.data.name}</Popup>
                 </Marker>
               ))}
             </LayerGroup>
@@ -47,12 +109,7 @@ function Map({ culinary, lodgings }: Props) {
             <LayerGroup>
               {lodgings.map((place) => (
                 <Marker key={`${place.data.id}`} position={[place.data.lat, place.data.lng]}>
-                  <Popup><div>
-                    <strong>{place.data.name}</strong>
-                    <p>{place.data.operational}</p>
-                    <p>{place.data.price}</p>
-                    <p>{place.data.facility}</p>
-                  </div></Popup>
+                  <Popup>{place.data.name}</Popup>
                 </Marker>
               ))}
             </LayerGroup>
