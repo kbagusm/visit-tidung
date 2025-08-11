@@ -5,6 +5,7 @@ import {
   Marker,
   Popup,
   TileLayer,
+  useMap,
 } from 'react-leaflet';
 import type { CollectionEntry } from 'astro:content';
 import 'leaflet/dist/leaflet.css';
@@ -59,7 +60,6 @@ function Map({ culinary, lodgings }: Props) {
   >>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mapLoading, setMapLoading] = useState(true);
-  const [zoomLevel, setZoomLevel] = useState(window.innerWidth < 768 ? 12 : 14);
 
   // Auto-open drawer when place is selected on mobile
   useEffect(() => {
@@ -138,8 +138,6 @@ function Map({ culinary, lodgings }: Props) {
 
         <MapContainer
           className="h-full w-full z-10"
-          center={[-5.805989, 106.518293]}
-          zoom={zoomLevel}
           scrollWheelZoom={true}
         >
           <TileLayer
@@ -149,6 +147,10 @@ function Map({ culinary, lodgings }: Props) {
               load: () => setMapLoading(false), // all tiles loaded
             }}
           />
+
+          {/* Automatically fit to bounds */}
+          <FitBounds culinary={culinary} lodgings={lodgings} />
+
           <LayersControl position="topright">
             <LayersControl.Overlay name="UMKM Kuliner" checked>
               <LayerGroup>
@@ -208,6 +210,33 @@ function Map({ culinary, lodgings }: Props) {
       </div>
     </div>
   );
+}
+
+function FitBounds({ culinary, lodgings }: {
+  culinary: CollectionEntry<'culinary'>[];
+  lodgings: CollectionEntry<'lodgings'>[];
+}) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!culinary.length && !lodgings.length) return;
+
+    const bounds = L.latLngBounds([]);
+
+    culinary.forEach((place) => {
+      bounds.extend([place.data.lat, place.data.lng]);
+    });
+
+    lodgings.forEach((place) => {
+      bounds.extend([place.data.lat, place.data.lng]);
+    });
+
+    if (bounds.isValid()) {
+      map.fitBounds(bounds, { padding: [0, 0] }); // optional padding
+    }
+  }, [culinary, lodgings, map]);
+
+  return null; // This component doesn't render anything visible
 }
 
 export default Map;
