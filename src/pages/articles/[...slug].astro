@@ -1,5 +1,4 @@
 ---
-// src/pages/articles/[...slug].astro
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
@@ -14,6 +13,11 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { Content } = await article.render();
 const pageTitle = article.data.title;
+
+// Tangani tanggal sebagai Date object
+const articleDate = article.data.date instanceof Date ? 
+                    article.data.date : 
+                    new Date(article.data.date);
 ---
 
 <BaseLayout {pageTitle}>
@@ -22,13 +26,11 @@ const pageTitle = article.data.title;
       <article class="bg-white rounded-xl shadow-lg p-8">
         <div class="mb-8">
           <div class="relative h-96 overflow-hidden rounded-lg">
-            {article.data.featuredImage && (
-              <img
-                src={article.data.featuredImage.src}
-                alt={article.data.featuredImage.alt || article.data.title}
-                class="w-full h-full object-cover"
-              />
-            )}
+            <img
+              src={article.data.featuredImage.src}
+              alt={article.data.featuredImage.alt || article.data.title}
+              class="w-full h-full object-cover"
+            />
             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
           </div>
         </div>
@@ -40,7 +42,7 @@ const pageTitle = article.data.title;
             <span>Oleh {article.data.author}</span>
             <span class="mx-2">•</span>
             <span>
-              {new Date(article.data.date).toLocaleDateString('id-ID', { 
+              {articleDate.toLocaleDateString('id-ID', { 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 

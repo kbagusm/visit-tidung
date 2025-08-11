@@ -1,8 +1,6 @@
 ---
-// src/pages/articles/index.astro
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 
 const articles = await getCollection('articles');
 const pageTitle = "Artikel Pulau Tidung";
@@ -24,54 +22,57 @@ const sortedArticles = articles.sort((a, b) =>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {sortedArticles.map((article) => (
+      {sortedArticles.map((article) => {
+        // Tangani tanggal sebagai Date object
+        const articleDate = article.data.date instanceof Date ? 
+                            article.data.date : 
+                            new Date(article.data.date);
+        
+        return (
           <a 
             href={`/articles/${article.slug}`} 
             class="group block h-full"
           >
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-              <div class="relative h-48 overflow-hidden">
-                {article.data.image && (
-                  <Image
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                <div class="relative h-48 overflow-hidden">
+                  <img
                     src={article.data.image}
                     alt={article.data.title}
-                    width={400}
-                    height={192}
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                )}
-                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-              </div>
-              
-              <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-xl font-bold text-blue-900 mb-3 group-hover:text-cyan-600 transition-colors">
-                  {article.data.title}
-                </h3>
-                <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
-                  {article.data.excerpt}
-                </p>
-                
-                <div class="flex items-center justify-between text-sm text-gray-500">
-                  <span>{article.data.author}</span>
-                  <span>{article.data.readTime}</span>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                 </div>
                 
-                <div class="flex items-center justify-between mt-3">
-                  <span class="text-sm text-gray-500">
-                    {new Date(article.data.date).toLocaleDateString('id-ID', { 
-                      year: 'numeric', 
-                      month: 'short', 
-                      day: 'numeric' 
-                    })}
-                  </span>
-                  <span class="text-blue-600 group-hover:text-cyan-600 font-medium transition-colors">
-                    Baca Selengkapnya
-                  </span>
+                <div class="p-6 flex-grow flex flex-col">
+                  <h3 class="text-xl font-bold text-blue-900 mb-3 group-hover:text-cyan-600 transition-colors">
+                    {article.data.title}
+                  </h3>
+                  <p class="text-gray-600 mb-4 line-clamp-3 flex-grow">
+                    {article.data.excerpt}
+                  </p>
+                  
+                  <div class="flex items-center justify-between text-sm text-gray-500">
+                    <span>{article.data.author}</span>
+                    <span>{article.data.readTime}</span>
+                  </div>
+                  
+                  <div class="flex items-center justify-between mt-3">
+                    <span class="text-sm text-gray-500">
+                      {articleDate.toLocaleDateString('id-ID', { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                      })}
+                    </span>
+                    <span class="text-blue-600 group-hover:text-cyan-600 font-medium transition-colors">
+                      Baca Selengkapnya
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-        ))}
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>

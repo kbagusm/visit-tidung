@@ -37,62 +37,62 @@ function ArticleSection() {
     };
   }, []);
 
-  // Artikel tetap untuk homepage
+  // Data artikel sesuai dengan konten Anda
   const articles = [
     {
       title: "Pesona Pulau Tidung: Surga Tersembunyi di Kepulauan Seribu",
       excerpt: "Temukan keindahan alam, kuliner khas, dan aktivitas seru di Pulau Tidung",
       author: "Tim Explore Tidung",
-      date: "15 Des 2024",
-      readTime: "5 min read",
-      image: "/images/articles/article1.1.jpeg",
-      slug: "pesona-pulau-tidung"
+      date: "2024-06-15",
+      readTime: "5 min baca",
+      image: "/images/articles/article1.jpeg",
+      slug: "pesona-pulau-tidung" // Slug sesuai nama file
     },
     {
-      title: "Panduan Lengkap Island Hopping",
-      excerpt: "Rencanakan petualangan island hopping sempurna di kepulauan Seribu.",
-      author: "Penulis Petualangan",
-      date: "10 Des 2024",
-      readTime: "8 min baca",
-      image: "/images/articles/island-hopping.jpg",
-      slug: "panduan-island-hopping"
-    },
-    {
-      title: "Budaya dan Tradisi Lokal",
-      excerpt: "Pelajari warisan budaya kaya dan gaya hidup tradisional penduduk Pulau Tidung.",
-      author: "Ahli Budaya",
-      date: "5 Des 2024",
+      title: "Spot Snorkeling Terbaik di Pulau Tidung",
+      excerpt: "Temukan lokasi bawah air terindah dengan terumbu karang berwarna-warni",
+      author: "Tim Petualang Laut",
+      date: "2024-06-10",
       readTime: "6 min baca",
-      image: "/images/articles/culture.jpg",
-      slug: "budaya-dan-tradisi"
+      image: "/images/articles/snorkeling.jpg",
+      slug: "spot-snorkeling-terbaik"
     },
     {
-      title: "Pariwisata Berkelanjutan di Tidung",
-      excerpt: "Bagaimana Pulau Tidung memimpin dalam praktik pariwisata berkelanjutan.",
-      author: "Pecinta Lingkungan",
-      date: "28 Nov 2024",
-      readTime: "7 min baca",
-      image: "/images/articles/sustainable-tourism.jpg",
-      slug: "pariwisata-berkelanjutan"
-    },
-    {
-      title: "5 Homestay Terbaik di Pulau Tidung",
-      excerpt: "Temukan tempat menginap terbaik untuk pengalaman pulau yang autentik.",
-      author: "Ahli Akomodasi",
-      date: "20 Nov 2024",
+      title: "Jembatan Cinta: Ikon Romantis Pulau Tidung",
+      excerpt: "Jelajahi kisah di balik jembatan penghubung Pulau Tidung Besar dan Kecil",
+      author: "Tim Sejarah Bahari",
+      date: "2024-06-05",
       readTime: "4 min baca",
-      image: "/images/articles/homestays.jpg",
-      slug: "homestay-terbaik"
+      image: "/images/articles/jembatan-cinta.jpg",
+      slug: "jembatan-cinta"
     },
     {
-      title: "Petualangan Kuliner: Hidangan Laut Pulau Tidung",
-      excerpt: "Panduan pecinta makanan untuk hidangan laut terfres di pulau.",
-      author: "Blogger Kuliner",
-      date: "15 Nov 2024",
-      readTime: "6 min baca",
-      image: "/images/articles/seafood.jpg",
-      slug: "petualangan-kuliner"
+      title: "Kuliner Khas Pulau Tidung: Dari Puk Cue hingga Keripik Sukun",
+      excerpt: "Nikmati cita rasa autentik hidangan laut khas Pulau Tidung",
+      author: "Tim Kuliner Nusantara",
+      date: "2024-05-28",
+      readTime: "7 min baca",
+      image: "/images/articles/kuliner-tidung.jpg",
+      slug: "kuliner-khas-tidung"
     },
+    {
+      title: "Panduan Wisata Keluarga di Pulau Tidung",
+      excerpt: "Aktivitas seru untuk keluarga dengan anak-anak di Pulau Tidung",
+      author: "Tim Wisata Keluarga",
+      date: "2024-05-20",
+      readTime: "8 min baca",
+      image: "/images/articles/wisata-keluarga.jpg",
+      slug: "wisata-keluarga"
+    },
+    {
+      title: "Konservasi Penyu dan Terumbu Karang di Pulau Tidung",
+      excerpt: "Dukung upaya pelestarian lingkungan di Pulau Tidung Kecil",
+      author: "Tim Konservasi Laut",
+      date: "2024-05-15",
+      readTime: "6 min baca",
+      image: "/images/articles/konservasi-tidung.jpg",
+      slug: "konservasi-penyu"
+    }
   ];
 
   return (
@@ -152,7 +152,13 @@ function ArticleSection() {
                     </div>
                     
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-500">{article.date}</span>
+                      <span className="text-sm text-gray-500">
+                        {new Date(article.date).toLocaleDateString('id-ID', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </span>
                       <a 
                         href={`/articles/${article.slug}`} 
                         className="text-blue-50 font-medium px-4 py-2 rounded-full transition-colors duration-200 shadow-sm bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 hover:shadow-md"

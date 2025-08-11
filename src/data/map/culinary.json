@@ -250,6 +250,9 @@
   {
     "id": 7,
     "name": "Warung Nasgor Bang Bewok",
+    "price": "Rp10.000 - Rp20.000",
+    "operational": "08.00 - 22.00",
+    "facility": "ESSSS",
     "lat": -5.798291,
     "lng": 106.495998,
     "products": [
