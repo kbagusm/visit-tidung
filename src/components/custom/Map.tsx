@@ -59,7 +59,7 @@ function Map({ culinary, lodgings }: Props) {
   >>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mapLoading, setMapLoading] = useState(true);
-
+  const [zoomLevel, setZoomLevel] = useState(window.innerWidth < 768 ? 12 : 14);
 
   // Auto-open drawer when place is selected on mobile
   useEffect(() => {
@@ -107,7 +107,7 @@ function Map({ culinary, lodgings }: Props) {
       {/* Mobile Drawer */}
       <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
         <DrawerContent>
-          <DrawerHeader className='hidden'>
+          <DrawerHeader className="hidden">
             <DrawerTitle></DrawerTitle>
             <DrawerDescription></DrawerDescription>
           </DrawerHeader>
@@ -131,15 +131,15 @@ function Map({ culinary, lodgings }: Props) {
         className={`h-[600px] w-full shadow-md rounded-xl overflow-hidden md:col-span-8`}
       >
         {mapLoading && (
-          <div className="flex items-center justify-center h-full w-full bg-white/80 z-50">
+          <div className="flex items-center justify-center h-[600px] w-full bg-white/80 z-50">
             <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
           </div>
         )}
 
         <MapContainer
           className="h-full w-full z-10"
-          center={[-5.798777, 106.504525]}
-          zoom={15}
+          center={[-5.805989, 106.518293]}
+          zoom={zoomLevel}
           scrollWheelZoom={true}
         >
           <TileLayer
@@ -171,8 +171,7 @@ function Map({ culinary, lodgings }: Props) {
                           }
                         },
                       }}
-                    >
-                    </Marker>
+                    ></Marker>
                   ))}
                 </MarkerClusterGroup>
               </LayerGroup>
@@ -199,8 +198,7 @@ function Map({ culinary, lodgings }: Props) {
                           }
                         },
                       }}
-                    >
-                    </Marker>
+                    ></Marker>
                   ))}
                 </MarkerClusterGroup>
               </LayerGroup>
