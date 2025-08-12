@@ -109,7 +109,7 @@ function HistorySection() {
             href="/history"
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-teal-600 transition-colors duration-300"
           >
-            Explore Full History
+            Jelajahi Sejarah Lengkap
           </a>
         </div>
       </div>
