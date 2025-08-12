@@ -3,6 +3,7 @@ import { History, Users, Calendar } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 import SectionSubHeading from './SectionSubHeading';
 import Cat1 from '@/assets/images/places/cat1.jpg';
+import Makam from "@/assets/images/history/makam-pulau-tidung.jpeg";
 
 function HistorySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -44,61 +45,59 @@ function HistorySection() {
           identitas Pulau Tidung
         </SectionSubHeading>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-left">
+        <div className="grid lg:grid-cols-2 gap-6 items-left">
           <div className="relative">
             <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
               <span className="text-gray-500">Sejarah Image</span>
-              <img src={Cat1.src} alt="Sejarah" className="absolute inset-0 w-full h-full object-cover rounded-xl" />
+              <img src={Makam.src} alt="Sejarah" className="absolute inset-0 w-full h-full object-cover rounded-xl" />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent rounded-xl" />
           </div>
 
           <div className="space-y-8">
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <History className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="text-2xl font-semibold text-blue-900 mb-3">
-                  Maritime Trading Hub
+                  Makam Raja Tidung XIII
                 </h3>
                 <p className="text-blue-600 text-lg">
-                  For centuries, Tidung Island served as a crucial stop for
-                  maritime traders navigating the Java Sea, connecting various
-                  Indonesian islands and international trade routes.
+                Pada masa kolonial, Pulau Tidung sebagai salah satu tempat pengasingan. Konon, seorang bangsawan dari Kerajaan Tidung, Kalimantan, 
+                diasingkan ke pulau ini oleh penjajah Belanda. Dari nama inilah, Pulau Tidung mendapatkan identitasnya. 
                 </p>
               </div>
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <Users className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="text-2xl font-semibold text-blue-900 mb-3">
-                  Betawi Cultural Roots
+                  Bubur Merah Putih Simbol Sedekah Muharam
                 </h3>
                 <p className="text-blue-600 text-lg">
-                  The island's inhabitants are primarily of Betawi descent,
-                  preserving traditional customs, language, and architectural
-                  styles that reflect Jakarta's indigenous culture.
+                  Tradisi tahunan dalam kalender Islam dimana setiap Bulan Muharam, warga Pulau Tidung mengadakan
+                  perayaan berupa membuat dan mengaduk Bubur Merah Putih bersama dalam wajan yang besar yang kemudian hasilnya
+                  akan dibagi bagikan kepada warga. Tradisi ini dilakukan selama Bulan Muharam di tiap RT yang ada di Pulau Tidung 
                 </p>
               </div>
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <Calendar className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="text-2xl font-semibold text-blue-900 mb-3">
-                  Modern Conservation
+                  Tradisi dan Kearifkan Lokal Pulau Tidung
                 </h3>
-                <p className="text-blue-600 text-lg">
-                  Today, Tidung Island leads Indonesia's blue economy
-                  initiatives, balancing sustainable tourism with marine
-                  conservation efforts to preserve its natural heritage for
-                  future generations.
+                <p className="text-blue-600 text-lg ">
+                  Salah satu tradisi yang masih dilestarikan adalah "Selametan Laut", 
+                  sebuah ritual doa bersama untuk memohon perlindungan dari laut dan keberkahan hasil tangkapan ikan. 
+                  Selain itu, seni kerajinan tangan seperti anyaman bambu dan daun kelapa menjadi bagian penting dari kehidupan mereka.
                 </p>
               </div>
             </div>
