@@ -178,11 +178,14 @@
 }
 
 @font-face {
-  font-family: 'Karimun', sans-serif;
-  src: url('/fonts/Karimun.ttf') format('truetype');
+  font-family: 'Karimun';
+  src: url('/fonts/Karimun.ttf');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+}
+
+@theme {
+  --font-karimun: 'Karimun', 'sans-serif';
 }
 
 @layer base {
