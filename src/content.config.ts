@@ -18,15 +18,9 @@ const articles = defineCollection({
   schema: ({ image }) => 
     z.object({
       title: z.string(),
-      excerpt: z.string(),
+      featuredImage: image(),
       author: z.string(),
-      date: z.coerce.date(), // Perubahan penting di sini
-      readTime: z.string(),
-      image: image(),
-      featuredImage: z.object({
-        src: image(),
-        alt: z.string(),
-      }),
+      publishedDate: z.date(),
     }),
 });
 
@@ -86,4 +80,4 @@ const traditionalFoods = defineCollection({
     }),
 });
 
-export const collections = { places, culinary, lodgings, traditionalFoods };
+export const collections = { places, culinary, lodgings, traditionalFoods, articles };

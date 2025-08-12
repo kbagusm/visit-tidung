@@ -18,6 +18,13 @@ featuredPlaces.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
 const traditionalFoods = await getCollection('traditionalFoods');
 const featuredTraditionalFoods = traditionalFoods.slice(0, 3);
+
+const articles = await getCollection('articles');
+articles.sort((a, b) => {
+  return b.data.publishedDate.getTime() - a.data.publishedDate.getTime();
+});
+const featuredArticles = articles.slice(0, 5);
+// sort
 ---
 
 <BaseLayout pageTitle="Visit Tidung">
@@ -71,7 +78,7 @@ const featuredTraditionalFoods = traditionalFoods.slice(0, 3);
     <MapsSection client:load />
 
     <!-- Article Section -->
-    <ArticleSection client:load />
+    <ArticleSection client:load articles={featuredArticles} />
 
     <!-- Booklets Section -->
     <BookletSection client:load />
