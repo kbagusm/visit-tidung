@@ -55,25 +55,27 @@ const featuredTraditionalFoods = traditionalFoods.slice(0, 3);
     </div>
   </header>
 
-  <VideoSection client:load />
+  <div class="bg-background">
+    <VideoSection client:load />
 
-  <!-- <PlacesSection client:load /> -->
-  <PlacesSection client:load places={featuredPlaces} />
+    <!-- <PlacesSection client:load /> -->
+    <PlacesSection client:load places={featuredPlaces} />
 
-  <!-- Culinary Section -->
-  <CulinarySection client:load traditionalFoods={featuredTraditionalFoods} />
+    <!-- Culinary Section -->
+    <CulinarySection client:load traditionalFoods={featuredTraditionalFoods} />
 
-  <!-- History Section -->
-  <HistorySection client:load />
+    <!-- History Section -->
+    <HistorySection client:load />
 
-  <!-- Maps Section -->
-  <MapsSection client:load />
+    <!-- Maps Section -->
+    <MapsSection client:load />
 
-  <!-- Article Section -->
-  <ArticleSection client:load />
+    <!-- Article Section -->
+    <ArticleSection client:load />
 
-  <!-- Booklets Section -->
-  <BookletSection client:load />
+    <!-- Booklets Section -->
+    <BookletSection client:load />
+  </div>
 </BaseLayout>
 
 <script is:inline>
