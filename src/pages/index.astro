@@ -8,6 +8,7 @@ import MapsSection from '@/components/custom/MapsSection';
 import ArticleSection from '@/components/custom/ArticleSection';
 import BookletSection from '@/components/custom/BookletSection';
 import PlacesSection from '@/components/custom/PlacesSection';
+import VideoSection from '@/components/custom/VideoSection';
 
 // Ambil data tempat wisata
 const places = await getCollection('places');
@@ -50,6 +51,8 @@ featuredPlaces.sort((a, b) => a.data.title.localeCompare(b.data.title));
       <div class="absolute bottom-5 left-1/2 animate-bounce"><Mouse /></div>
     </div>
   </header>
+
+  <VideoSection client:load />
 
   <!-- <PlacesSection client:load /> -->
   <PlacesSection client:load places={featuredPlaces} />

@@ -1,8 +1,12 @@
 import React from 'react';
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
+type Props = {
+  className?: string;
+}
+
+function SectionHeading({ children, className }: Props & { children: React.ReactNode }) {
   return (
-    <h2 className="text-6xl font-[Karimun] text-primary text-center">
+    <h2 className={`text-6xl font-[Karimun] text-primary text-center ${className}`}>
       {children}
     </h2>
   );
