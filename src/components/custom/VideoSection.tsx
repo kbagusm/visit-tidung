@@ -65,7 +65,7 @@ export default function VideoSection() {
       <div className="max-w-7xl mx-auto relative grid md:grid-cols-2 md:gap-8">
         <div
           ref={videoContainerRef}
-          className="relative opacity-0 transform -translate-x-10 transition-all duration-500"
+          className="relative opacity-0 transform transition-all duration-500"
         >
           <video
             ref={videoRef}
@@ -96,7 +96,7 @@ export default function VideoSection() {
 
         <div
           ref={textContainerRef}
-          className="h-full flex justify-center items-center order-first opacity-0 transform translate-x-10 transition-all duration-500"
+          className="h-full flex justify-center items-center order-first opacity-0 transform transition-all duration-500"
         >
           <div className="text-start">
             <SectionHeading className='md:text-start'>
