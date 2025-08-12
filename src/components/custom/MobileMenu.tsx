@@ -7,13 +7,14 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-import { AlignJustify } from 'lucide-react';
+import { AlignJustify, ChevronDown, ChevronUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { menus } from '@/data/menus';
 
 export default function MobileMenu() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     if (window.location.pathname !== '/') {
@@ -44,6 +45,14 @@ export default function MobileMenu() {
     }
   };
 
+  const toggleDropdown = (title: string) => {
+    if (openDropdown === title) {
+      setOpenDropdown(null);
+    } else {
+      setOpenDropdown(title);
+    }
+  };
+
   return (
     <Sheet>
       <SheetTrigger
@@ -55,29 +64,68 @@ export default function MobileMenu() {
       <SheetContent side="top" className="pt-20">
         <div className="flex flex-col gap-6 p-4">
           <div className="text-5xl font-[Karimun] mb-4">Menu</div>
-          {menus.map((menu) => (
-            menu.scrollTarget ? (
-              <a
-                key={menu.title}
-                href={`#${menu.scrollTarget}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(menu.scrollTarget!);
-                }}
-                className="font-[Karimun] text-3xl py-2 hover:text-blue-600 transition-colors"
-              >
-                {menu.title}
-              </a>
-            ) : (
-              <a
-                key={menu.title}
-                href={menu.href}
-                className="font-[Karimun] text-3xl py-2 hover:text-blue-600 transition-colors"
-              >
-                {menu.title}
-              </a>
-            )
-          ))}
+          {menus.map((menu) => {
+            if (menu.dropdownItems) {
+              return (
+                <div key={menu.title} className="flex flex-col">
+                  <div 
+                    className="flex items-center justify-between font-[Karimun] text-3xl py-2 hover:text-blue-600 transition-colors cursor-pointer"
+                    onClick={() => toggleDropdown(menu.title)}
+                  >
+                    <span>{menu.title}</span>
+                    {openDropdown === menu.title ? (
+                      <ChevronUp className="w-6 h-6" />
+                    ) : (
+                      <ChevronDown className="w-6 h-6" />
+                    )}
+                  </div>
+                  
+                  {openDropdown === menu.title && (
+                    <div className="pl-6 mt-2 flex flex-col gap-4 border-l-2 border-blue-200">
+                      {menu.dropdownItems.map((item) => (
+                        <a
+                          key={item.title}
+                          href={item.href}
+                          className=" text-m py-1 hover:text-blue-600 transition-colors"
+                          onClick={() => {
+                            // Tutup menu mobile setelah memilih
+                            document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+                          }}
+                        >
+                          {item.title}
+                        </a>
+                      ))}
+                      
+                    </div>
+                  )}
+                </div>
+              );
+            } else if (menu.scrollTarget) {
+              return (
+                <a
+                  key={menu.title}
+                  href={`#${menu.scrollTarget}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(menu.scrollTarget!);
+                  }}
+                  className="font-[Karimun] text-3xl py-2 hover:text-blue-600 transition-colors"
+                >
+                  {menu.title}
+                </a>
+              );
+            } else {
+              return (
+                <a
+                  key={menu.title}
+                  href={menu.href}
+                  className="font-[Karimun] text-3xl py-2 hover:text-blue-600 transition-colors"
+                >
+                  {menu.title}
+                </a>
+              );
+            }
+          })}
         </div>
         <SheetFooter className="mt-8">
           <SheetClose asChild>

@@ -10,9 +10,14 @@ export const menus: Menu[] = [
     href: '/',
   },
   {
-    title: 'Tempat Wisata',
-    href: '/#places',
-    scrollTarget: 'places',
+    title: "Tempat Wisata",
+    scrollTarget: "places", // Menambahkan scrollTarget untuk section places
+    dropdownItems: [
+      { title: "Jembatan Cinta", href: "/places/jembatan-cinta" },
+      { title: "Pulau Payung", href: "/places/pulau-payung" },
+      { title: "Saung Sunset", href: "/places/saung-sunset" },
+      { title: "Tempat Wisata Lainnya!", href: "/places" },
+    ]
   },
   {
     title: 'Kuliner',

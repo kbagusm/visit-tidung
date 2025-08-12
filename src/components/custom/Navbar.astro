@@ -34,6 +34,7 @@ import Navigation from './Navigation';
   const navClasses = ['bg-white', 'shadow-md'];
   const navbarLogo = document.getElementById('navbar-logo');
   const navLinks = document.querySelectorAll('.navigation-menu-link');
+  const dropdowns = document.querySelectorAll('.dropdown-item');
   
   // Fungsi untuk mengatur style navbar
   function setNavbarStyle(isScrolled) {
@@ -45,6 +46,10 @@ import Navigation from './Navigation';
         link.classList.remove('text-primary-foreground');
         link.classList.add('text-primary');
       });
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('text-primary-foreground');
+        dropdown.classList.add('text-gray-800');
+      });
     } else {
       navbar.classList.remove(...navClasses);
       navbarLogo.classList.remove('text-primary');
@@ -52,6 +57,10 @@ import Navigation from './Navigation';
       navLinks.forEach(link => {
         link.classList.remove('text-primary');
         link.classList.add('text-primary-foreground');
+      });
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('text-gray-800');
+        dropdown.classList.add('text-primary-foreground');
       });
     }
   }
@@ -81,5 +90,16 @@ import Navigation from './Navigation';
         }, 300);
       }
     }
+  });
+  
+  // Tangani klik pada menu "Tempat Wisata" untuk scroll ke section places
+  document.querySelectorAll('a[href="#places"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const placesSection = document.getElementById('places');
+      if (placesSection) {
+        placesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   });
 </script>

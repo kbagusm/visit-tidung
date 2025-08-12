@@ -62,7 +62,7 @@ function HistorySection() {
                 <h3 className="text-2xl font-semibold text-blue-900 mb-3">
                   Makam Raja Tidung XIII
                 </h3>
-                <p className="text-blue-600 text-lg">
+                <p className="text-lg">
                 Pada masa kolonial, Pulau Tidung sebagai salah satu tempat pengasingan. Konon, seorang bangsawan dari Kerajaan Tidung, Kalimantan, 
                 diasingkan ke pulau ini oleh penjajah Belanda. Dari nama inilah, Pulau Tidung mendapatkan identitasnya. 
                 </p>
@@ -77,7 +77,7 @@ function HistorySection() {
                 <h3 className="text-2xl font-semibold text-blue-900 mb-3">
                   Sedekah Muharam Bubur Merah Putih
                 </h3>
-                <p className="text-blue-600 text-lg">
+                <p className="text-lg">
                   Tradisi tahunan dalam kalender Islam dimana setiap Bulan Muharam, warga Pulau Tidung mengadakan
                   perayaan berupa membuat dan mengaduk Bubur Merah Putih bersama-sama dalam wajan yang besar. Hasil pembuatan bubur kemudian akan
                   dibagikan ke warga sekitar. Tradisi ini dilakukan selama Bulan Muharam untuk tiap RT di Pulau Tidung
@@ -93,7 +93,7 @@ function HistorySection() {
                 <h3 className="text-2xl font-semibold text-blue-900 mb-3">
                   Tradisi dan Kearifkan Lokal Pulau Tidung
                 </h3>
-                <p className="text-blue-600 text-lg ">
+                <p className="text-lg ">
                   Salah satu tradisi yang masih dilestarikan adalah "Selametan Laut", 
                   sebuah ritual doa bersama untuk memohon perlindungan dari laut dan keberkahan hasil tangkapan ikan. 
                   Selain itu, seni kerajinan tangan seperti anyaman bambu dan daun kelapa menjadi bagian penting dari kehidupan mereka.
@@ -109,7 +109,7 @@ function HistorySection() {
             href="/history"
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-teal-600 transition-colors duration-300"
           >
-            Explore Full History
+            Jelajahi Sejarah Lengkap Pulau Tidung
           </a>
         </div>
       </div>

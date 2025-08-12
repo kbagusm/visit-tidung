@@ -252,7 +252,7 @@ function BookletSection() {
             href="/booklets" 
             className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-colors duration-300 shadow-md hover:shadow-lg"
           >
-            View All Booklets
+            Lihat Semua Booklet
           </a>
         </div>
       </div>
