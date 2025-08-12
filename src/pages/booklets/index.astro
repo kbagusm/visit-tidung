@@ -1,7 +1,8 @@
 ---
 // src/pages/booklets/index.astro
-import SectionHeading from '@/components/custom/SectionHeading';
-import SectionSubHeading from '@/components/custom/SectionSubHeading';
+import PageHeading from '@/components/custom/PageHeading';
+import PageSubHeading from '@/components/custom/PageSubHeading';
+
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { FileText } from 'lucide-react';
 
@@ -109,13 +110,13 @@ const booklets = [
 ---
 
 <BaseLayout {pageTitle}>
-  <section class="py-20 bg-white">
+  <section class="py-16 bg-gradient-to-br from-cyan-50 to-blue-50">
     <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <SectionHeading> Booklet </SectionHeading>
-        <SectionSubHeading>
+        <PageHeading> Booklet </PageHeading>
+        <PageSubHeading>
           Panduan komprehensif untuk petualangan Anda di Pulau Tidung
-        </SectionSubHeading>
+        </PageSubHeading>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

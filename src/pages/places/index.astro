@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/card';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
+import PageHeading from '@/components/custom/PageHeading';
+import PageSubHeading from '@/components/custom/PageSubHeading';
 
 const places = await getCollection('places');
 // Sort places by title
@@ -17,10 +19,11 @@ places.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <BaseLayout pageTitle="Places - AzBagas">
-  <section class="bg-background px-3 mb-24">
-    <h1 class="text-4xl text-center mt-10 font-[Karimun] text-primary">
-      Tempat Wisata di Pulau Tidung
-    </h1>
+  <section class="bg-gradient-to-br from-cyan-50 to-blue-50 px-3 py-16">
+    <PageHeading> Tempat Wisata di Pulau Tidung </PageHeading>
+    <PageSubHeading>
+      Temukan berbagai tempat menarik yang bisa Anda kunjungi di Pulau Tidung
+    </PageSubHeading>
     <div
       class="my-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
     >

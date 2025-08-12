@@ -99,7 +99,7 @@ function Map({ culinary, lodgings }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
       {/* Sidebar */}
-      <div className="h-[600px] overflow-y-scroll bg-gradient-to-br from-blue-50 to-teal-50 py-3 px-6 rounded-xl md:col-span-4 hidden md:block">
+      <div className="h-[600px] overflow-y-scroll bg-card shadow-md overflow-hidden py-3 px-6 rounded-xl md:col-span-4 hidden md:block">
         {selectedPlace !== null ? (
           selectedPlace.collection === 'culinary' ? (
             // Culinary
