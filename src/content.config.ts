@@ -70,4 +70,20 @@ const lodgings = defineCollection({
     }),
 });
 
-export const collections = { places, culinary, lodgings };
+const traditionalFoods = defineCollection({
+  loader: file('src/data/traditionalFoods.json'),
+  schema: ({ image }) =>
+    z.object({
+      id: z.number(),
+      name: z.string(),
+      featuredImage: image(),
+      images: z.array(image()).optional(),
+      productName: z.string().optional(),
+      definition: z.string().optional(),
+      ingredients: z.string(),
+      philosophy: z.string().optional(),
+      creation: z.string().optional()
+    }),
+});
+
+export const collections = { places, culinary, lodgings, traditionalFoods };
