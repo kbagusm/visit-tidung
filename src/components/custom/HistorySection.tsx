@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react';
-import { History, Users, Calendar } from 'lucide-react';
+import { MapPin , Calendar, Utensils } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 import SectionSubHeading from './SectionSubHeading';
-import Cat1 from '@/assets/images/places/cat1.jpg';
 import Makam from "@/assets/images/history/makam-pulau-tidung.jpeg";
 
 function HistorySection() {
@@ -57,7 +56,7 @@ function HistorySection() {
           <div className="space-y-8">
             <div className="flex items-start space-x-4">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <History className="h-6 w-6 text-white" />
+                <MapPin className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="text-2xl font-semibold text-blue-900 mb-3">
@@ -72,16 +71,16 @@ function HistorySection() {
 
             <div className="flex items-start space-x-4">
               <div className="w-10 h-10 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-full flex items-center justify-center flex-shrink-0">
-                <Users className="h-6 w-6 text-white" />
+                <Utensils className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="text-2xl font-semibold text-blue-900 mb-3">
-                  Bubur Merah Putih Simbol Sedekah Muharam
+                  Sedekah Muharam Bubur Merah Putih
                 </h3>
                 <p className="text-blue-600 text-lg">
                   Tradisi tahunan dalam kalender Islam dimana setiap Bulan Muharam, warga Pulau Tidung mengadakan
-                  perayaan berupa membuat dan mengaduk Bubur Merah Putih bersama dalam wajan yang besar yang kemudian hasilnya
-                  akan dibagi bagikan kepada warga. Tradisi ini dilakukan selama Bulan Muharam di tiap RT yang ada di Pulau Tidung 
+                  perayaan berupa membuat dan mengaduk Bubur Merah Putih bersama-sama dalam wajan yang besar. Hasil pembuatan bubur kemudian akan
+                  dibagikan ke warga sekitar. Tradisi ini dilakukan selama Bulan Muharam untuk tiap RT di Pulau Tidung
                 </p>
               </div>
             </div>
