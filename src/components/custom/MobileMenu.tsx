@@ -3,7 +3,10 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetFooter,
+  SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
 
@@ -61,15 +64,19 @@ export default function MobileMenu() {
       >
         <AlignJustify className="block lg:hidden cursor-pointer" size={32} />
       </SheetTrigger>
-      <SheetContent side="top" className="pt-20">
-        <div className="flex flex-col gap-6 p-4">
-          <div className="text-5xl font-[Karimun] mb-4">Menu</div>
+      <SheetContent side="top" className="max-h-screen overflow-y-auto gap-0">
+        <SheetHeader className='hidden'>
+          <SheetTitle></SheetTitle>
+          <SheetDescription></SheetDescription>
+        </SheetHeader>
+        <div className="flex flex-col gap-2 p-4">
+          <div className="text-5xl font-[Karimun]">Menu</div>
           {menus.map((menu) => {
             if (menu.dropdownItems) {
               return (
                 <div key={menu.title} className="flex flex-col">
                   <div 
-                    className="flex items-center justify-between font-[Karimun] text-3xl py-2 hover:text-blue-600 transition-colors cursor-pointer"
+                    className="flex items-center justify-between font-[Karimun] text-2xl py-2 hover:text-blue-600 transition-colors cursor-pointer"
                     onClick={() => toggleDropdown(menu.title)}
                   >
                     <span>{menu.title}</span>
@@ -104,12 +111,12 @@ export default function MobileMenu() {
               return (
                 <a
                   key={menu.title}
-                  href={`#${menu.scrollTarget}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(menu.scrollTarget!);
-                  }}
-                  className="font-[Karimun] text-3xl py-2 hover:text-blue-600 transition-colors"
+                  href={`${menu.href}`}
+                  // onClick={(e) => {
+                  //   e.preventDefault();
+                  //   scrollToSection(menu.scrollTarget!);
+                  // }}
+                  className="font-[Karimun] text-2xl py-2 hover:text-blue-600 transition-colors"
                 >
                   {menu.title}
                 </a>
@@ -119,7 +126,7 @@ export default function MobileMenu() {
                 <a
                   key={menu.title}
                   href={menu.href}
-                  className="font-[Karimun] text-3xl py-2 hover:text-blue-600 transition-colors"
+                  className="font-[Karimun] text-2xl py-2 hover:text-blue-600 transition-colors"
                 >
                   {menu.title}
                 </a>
@@ -127,9 +134,9 @@ export default function MobileMenu() {
             }
           })}
         </div>
-        <SheetFooter className="mt-8">
+        <SheetFooter className='py-2'>
           <SheetClose asChild>
-            <Button variant="outline" className="w-full text-lg py-6">
+            <Button variant="outline" className="w-full py-6">
               Tutup Menu
             </Button>
           </SheetClose>

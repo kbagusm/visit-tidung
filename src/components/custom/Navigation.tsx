@@ -43,10 +43,10 @@ function Navigation() {
         >
           {menu.scrollTarget ? (
             <a
-              href={`#${menu.scrollTarget}`}
+              href={`${menu.href}`}
               onClick={(e) => {
-                e.preventDefault();
-                scrollToSection(menu.scrollTarget!);
+                // e.preventDefault();
+                // scrollToSection(menu.scrollTarget!);
                 setOpenDropdown(null);
               }}
               className="navigation-menu-link py-3 px-4 text-2xl font-[Karimun] transition-colors duration-300 hover:text-accent focus:outline-none whitespace-nowrap"
