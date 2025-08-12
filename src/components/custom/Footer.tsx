@@ -1,39 +1,44 @@
-import {
-  Heart,
-} from 'lucide-react';
-import Logo from '@/assets/images/mendayung-seribu-logo.svg'
-import { FaInstagram, FaTiktok } from "react-icons/fa";
+import { Heart } from 'lucide-react';
+import Logo from '@/assets/images/mendayung-seribu-logo.svg';
+import { FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src={Logo.src} alt="Logo Mendayung Seribu" className='w-8' />
-              <h3 className="text-2xl font-[Karimun]">
-                Visit Tidung
-              </h3>
+              <img src={Logo.src} alt="Logo Mendayung Seribu" className="w-8" />
+              <h3 className="text-2xl font-[Karimun]">Visit Tidung</h3>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">
               {currentYear} © KKN PPM UGM - Mendayung Seribu
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.instagram.com/mendayung.seribu/"
+                target="_blank"
                 className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
               >
-                <FaInstagram />
+                <FaInstagram size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@mendayung.seribu"
+                target="_blank"
                 className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
               >
-                <FaTiktok />
+                <FaTiktok size={20} />
+              </a>
+              <a
+                href="https://www.youtube.com/@mendayungseribu"
+                target="_blank"
+                className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+              >
+                <FaYoutube size={20} />
               </a>
             </div>
           </div>
@@ -103,9 +108,7 @@ function Footer() {
 
           {/* Popular Destinations */}
           <div className="space-y-4">
-            <h4 className="text-2xl font-[Karimun]">
-              Destinasi Populer
-            </h4>
+            <h4 className="text-2xl font-[Karimun]">Destinasi Populer</h4>
             <ul className="space-y-2">
               <li>
                 <a
@@ -125,26 +128,10 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/places/saung-sunset"
                   className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
                 >
-                  Pantai Saung Cemara
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Spot Snorkeling
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Sunset Point
+                  Saung Sunset
                 </a>
               </li>
             </ul>
@@ -155,7 +142,7 @@ function Footer() {
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-primary-foreground/60 text-sm">
-              © 2025 Visit Tidung. All rights reserved.
+              © {currentYear} Visit Tidung. All rights reserved.
             </p>
             <div className="flex items-center space-x-1 text-primary-foreground/60 text-sm">
               <span>Made with</span>
