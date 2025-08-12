@@ -66,11 +66,11 @@ function MapsSection() {
           </SectionSubHeading>
         </div>
 
-        <a href="/maps">
-          <div
-            ref={mapThumbnailRef}
-            className="flex justify-center opacity-0 transform transition-all duration-500"
-          >
+        <div
+          ref={mapThumbnailRef}
+          className="flex justify-center opacity-0 transform transition-all duration-500"
+        >
+          <a href="/maps">
             <div className="overflow-hidden bg-white rounded-xl shadow-lg max-w-lg group relative">
               <img
                 src={MapThumbnail.src}
@@ -87,18 +87,17 @@ function MapsSection() {
                 Lihat Peta
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
 
-      <div className='flex justify-center mt-6'>
-
-        <a
-          href="/maps"
-          className="inline-block px-6 py-3 mx-auto bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300"
-        >
-          Lihat Peta
-        </a>
-      </div>
+        <div className="flex justify-center mt-6">
+          <a
+            href="/maps"
+            className="inline-block px-6 py-3 mx-auto bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300"
+          >
+            Lihat Peta
+          </a>
+        </div>
       </div>
     </section>
   );
