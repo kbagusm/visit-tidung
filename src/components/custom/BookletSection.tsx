@@ -151,6 +151,45 @@ function BookletSection() {
             navigation={{
               nextEl: '.booklets-next',
               prevEl: '.booklets-prev',
+              disabledClass: 'swiper-button-disabled',
+            }}
+            watchSlidesProgress={true}
+            watchOverflow={true}
+            onSlideChange={(swiper) => {
+              // Disable prev button di awal
+              if (swiper.isBeginning) {
+                document
+                  .querySelector('.booklets-prev')
+                  ?.classList.add('pointer-events-none', 'opacity-50');
+              } else {
+                document
+                  .querySelector('.booklets-prev')
+                  ?.classList.remove('pointer-events-none', 'opacity-50');
+              }
+
+              // Disable next button di akhir
+              if (swiper.isEnd) {
+                document
+                  .querySelector('.booklets-next')
+                  ?.classList.add('pointer-events-none', 'opacity-50');
+              } else {
+                document
+                  .querySelector('.booklets-next')
+                  ?.classList.remove('pointer-events-none', 'opacity-50');
+              }
+            }}
+            onInit={(swiper) => {
+              // Cek kondisi awal
+              if (swiper.isBeginning) {
+                document
+                  .querySelector('.booklets-prev')
+                  ?.classList.add('pointer-events-none', 'opacity-50');
+              }
+              if (swiper.isEnd) {
+                document
+                  .querySelector('.booklets-next')
+                  ?.classList.add('pointer-events-none', 'opacity-50');
+              }
             }}
             pagination={{
               clickable: true,

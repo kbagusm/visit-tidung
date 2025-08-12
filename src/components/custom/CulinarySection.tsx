@@ -1,10 +1,4 @@
-import React, { useRef, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import CulinaryCard from './CulinaryCard';
+import { useRef, useEffect } from 'react';
 import SectionHeading from './SectionHeading';
 import SectionSubHeading from './SectionSubHeading';
 import type { CollectionEntry } from 'astro:content';
@@ -15,11 +9,35 @@ type Props = {
 };
 
 function CulinarySection({ traditionalFoods }: Props) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && sectionRef.current) {
+          sectionRef.current.classList.remove('opacity-0', 'translate-y-10');
+          sectionRef.current.classList.add('opacity-100', 'translate-y-0');
+        }
+      });
+    }, observerOptions);
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
 
   return (
     <section
       id="culinary-section"
-      className="py-10 px-4 bg-white transform transition-all duration-500"
+      ref={sectionRef}
+      className="py-10 px-4 bg-white transform opacity-0 translate-y-10 transition-all duration-500"
     >
       <div className="max-w-4xl mx-auto">
         <SectionHeading>Kuliner Khas</SectionHeading>
