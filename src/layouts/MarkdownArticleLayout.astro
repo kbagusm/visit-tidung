@@ -7,10 +7,10 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout pageTitle={`${frontmatter.title} - Visit Tidung`}>
   <section class="py-10 bg-gradient-to-br from-cyan-50 to-blue-50">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <article class="bg-white rounded-xl shadow-lg p-8">
+    <div class="container mx-auto px-3 max-w-4xl">
+      <article class="bg-white rounded-xl shadow-lg p-4 pb-10">
         <div class="mb-8">
-          <div class="relative h-96 overflow-hidden rounded-lg">
+          <div class="relative md:h-96 overflow-hidden rounded-lg">
             <Image
               src={frontmatter.featuredImage}
               alt={frontmatter.title}
@@ -39,7 +39,7 @@ const { frontmatter } = Astro.props;
           </div>
         </div>
 
-        <div class="prose prose-lg max-w-none">
+        <div class="prose md:prose-lg max-w-none">
           <slot />
         </div>
       </article>
