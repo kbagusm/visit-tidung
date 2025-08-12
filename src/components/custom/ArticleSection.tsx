@@ -119,7 +119,7 @@ function ArticleSection({ articles }: Props) {
           >
             {articles.map((article, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-white mb-4 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col">
+                <div className="bg-white mb-4 mt-4 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col">
                   <div className="h-48 overflow-hidden">
                     <img
                       src={article.data.featuredImage.src}
