@@ -106,35 +106,69 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Popular Destinations */}
-          <div className="space-y-4">
-            <h4 className="text-2xl font-[Karimun]">Destinasi Populer</h4>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="/places/jembatan-cinta"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Jembatan Cinta
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/places/pulau-payung"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Pulau Payung
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/places/saung-sunset"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                >
-                  Saung Sunset
-                </a>
-              </li>
-            </ul>
+          {/* Popular Destinations and Articles Side by Side */}
+          <div className="lg:col-span-2 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Popular Destinations */}
+            <div className="space-y-4">
+              <h4 className="text-2xl font-[Karimun]">Destinasi Populer</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="/places/jembatan-cinta"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  >
+                    Jembatan Cinta
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/places/pulau-payung"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  >
+                    Pulau Payung
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/places/saung-sunset"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  >
+                    Saung Sunset
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Popular Articles */}
+            <div className="space-y-4">
+              <h4 className="text-2xl font-[Karimun]">Artikel Populer</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="/articles/analisis-komponen-dasar-pariwisata-di-pulau-tidung-dengan-daya-tarik-bahari"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  >
+                    Analisis Komponen Dasar Pariwisata di Pulau Tidung dengan Daya Tarik Bahari
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/articles/studi-kelayakan-ekowisata-pulau-tidung"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  >
+                    Studi Kelayakan Ekowisata Pulau Tidung
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/articles/jelajahi-keindahan-permata-laut-jawa-pulau-payung"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  >
+                    Jelajahi Keindahan Permata Laut Jawa di Pulau Payung!
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

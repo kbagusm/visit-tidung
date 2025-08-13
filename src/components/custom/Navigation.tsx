@@ -70,7 +70,7 @@ function Navigation() {
                 ${menu.title === "Artikel" ? "min-w-[300px] max-w-[90vw]" : "w-64"}
               `}
               style={{ 
-                transform: menu.title === "Artikel" ? "translateX(-10%)" : "none",
+                transform: menu.title === "Artikel" ? "translateX(-1%)" : "none",
                 left: menu.title === "Artikel" ? "auto" : "0",
                 right: menu.title === "Artikel" ? "0" : "auto"
               }}
