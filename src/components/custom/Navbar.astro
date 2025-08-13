@@ -34,7 +34,7 @@ import Navigation from './Navigation';
   const navClasses = ['bg-white', 'shadow-md'];
   const navbarLogo = document.getElementById('navbar-logo');
   const navLinks = document.querySelectorAll('.navigation-menu-link');
-  const dropdowns = document.querySelectorAll('.dropdown-item');
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
   
   // Fungsi untuk mengatur style navbar
   function setNavbarStyle(isScrolled) {
@@ -46,9 +46,9 @@ import Navigation from './Navigation';
         link.classList.remove('text-primary-foreground');
         link.classList.add('text-primary');
       });
-      dropdowns.forEach(dropdown => {
-        dropdown.classList.remove('text-primary-foreground');
-        dropdown.classList.add('text-gray-800');
+      dropdownItems.forEach(item => {
+        item.classList.remove('text-primary-foreground');
+        item.classList.add('text-gray-800');
       });
     } else {
       navbar.classList.remove(...navClasses);
@@ -58,9 +58,9 @@ import Navigation from './Navigation';
         link.classList.remove('text-primary');
         link.classList.add('text-primary-foreground');
       });
-      dropdowns.forEach(dropdown => {
-        dropdown.classList.remove('text-gray-800');
-        dropdown.classList.add('text-primary-foreground');
+      dropdownItems.forEach(item => {
+        item.classList.remove('text-gray-800');
+        item.classList.add('text-primary-foreground');
       });
     }
   }
@@ -99,6 +99,17 @@ import Navigation from './Navigation';
       const placesSection = document.getElementById('places');
       if (placesSection) {
         placesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+  
+  // Tangani klik pada menu "Artikel" untuk scroll ke section articles
+  document.querySelectorAll('a[href="#articles"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const articlesSection = document.getElementById('articles');
+      if (articlesSection) {
+        articlesSection.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });

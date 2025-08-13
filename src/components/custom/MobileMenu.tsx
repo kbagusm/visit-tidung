@@ -3,10 +3,7 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
   SheetFooter,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
 
@@ -65,10 +62,6 @@ export default function MobileMenu() {
         <AlignJustify className="block lg:hidden cursor-pointer" size={32} />
       </SheetTrigger>
       <SheetContent side="top" className="max-h-screen overflow-y-auto gap-0">
-        <SheetHeader className='hidden'>
-          <SheetTitle></SheetTitle>
-          <SheetDescription></SheetDescription>
-        </SheetHeader>
         <div className="flex flex-col gap-2 p-4">
           <div className="text-5xl font-[Karimun]">Menu</div>
           {menus.map((menu) => {
@@ -93,7 +86,7 @@ export default function MobileMenu() {
                         <a
                           key={item.title}
                           href={item.href}
-                          className=" text-m py-1 hover:text-blue-600 transition-colors"
+                          className="text-sm py-1 hover:text-blue-600 transition-colors"
                           onClick={() => {
                             // Tutup menu mobile setelah memilih
                             document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
@@ -102,7 +95,6 @@ export default function MobileMenu() {
                           {item.title}
                         </a>
                       ))}
-                      
                     </div>
                   )}
                 </div>
@@ -111,11 +103,11 @@ export default function MobileMenu() {
               return (
                 <a
                   key={menu.title}
-                  href={`${menu.href}`}
-                  // onClick={(e) => {
-                  //   e.preventDefault();
-                  //   scrollToSection(menu.scrollTarget!);
-                  // }}
+                  href={`#${menu.scrollTarget}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(menu.scrollTarget!);
+                  }}
                   className="font-[Karimun] text-2xl py-2 hover:text-blue-600 transition-colors"
                 >
                   {menu.title}

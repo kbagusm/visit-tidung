@@ -37,9 +37,26 @@ export const menus: Menu[] = [
     scrollTarget: 'maps' 
   },
   {
-    title: 'Artikel', 
-    href: '/articles', 
-    scrollTarget: 'articles' 
+    title: "Artikel",
+    scrollTarget: "articles",
+    dropdownItems: [
+      { 
+        title: "Analisis Komponen Dasar Pariwisata di Pulau Tidung dengan Daya Tarik Bahari", 
+        href: "/articles/analisis-komponen-dasar-pariwisata-di-pulau-tidung-dengan-daya-tarik-bahari" 
+      },
+      { 
+        title: "Studi Kelayakan Ekowisata Pulau Tidung", 
+        href: "/articles/studi-kelayakan-ekowisata-pulau-tidung" 
+      },
+      { 
+        title: "Jelajahi keindahan permata Laut Jawa, Pulau Payung!", 
+        href: "/articles/jelajahi-keindahan-permata-laut-jawa-pulau-payung" 
+      },
+      { 
+        title: "Artikel Menarik Lainnya!", 
+        href: "/articles" 
+      }
+    ]
   },
   {
     title: 'Booklet',
