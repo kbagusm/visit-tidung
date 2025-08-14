@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { FileText, Download, BookOpen } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import SectionHeading from './SectionHeading';
 import SectionSubHeading from './SectionSubHeading';
+import { booklets } from '@/data/booklets';
 
 function BookletSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -72,65 +73,7 @@ function BookletSection() {
     };
   }, []);
 
-  // Data booklet - bisa ditambah/dikurangi sesuai kebutuhan
-  const booklets = [
-    {
-      title: "GEMARIKAN",
-      description: "GEMARIKAN - Gemar Makan Ikan untuk meningkatkan kesadaran tentang bahaya stunting",
-      author: "M. Riski Ramadhana",
-      pages: "8 halaman",
-      format: "PDF",
-      size: "13.8 MB",
-      url: "/booklets/Booklet GEMARIKAN-Riski.pdf",
-      previewUrl: "/booklets/Booklet GEMARIKAN-Riski.pdf",
-      poster: '/images/booklets/Booklet GEMARIKAN-Riski.png',
-    },
-    {
-      title: "Edutourism Guide",
-      description: "Berwisata dengan aman dan nyaman melalui panduan wisata berkelanjutan di Pulau Tidung",
-      author: "Alisha Syavitri",
-      pages: "8 halaman",
-      format: "PDF",
-      size: "6.4 MB",
-      url: "/booklets/Booklet Edutourism Guide - Alisha.pdf",
-      previewUrl: "/booklets/Booklet Edutourism Guide - Alisha.pdf",
-      poster: '/images/booklets/Booklet Edutourism Guide - Alisha.png',
-    },
-    {
-      title: "Book n Stay RW Satu",
-      description: "Temukan pengalaman liburan terbaik dengan penginapan yang terletak di RW 1 Pulau Tidung",
-      author: "Dewantie Angelita",
-      pages: "16 halaman",
-      format: "PDF",
-      size: "13.3 MB",
-      url: "/booklets/Booklet Penginapan - Angel.pdf",
-      previewUrl: "/booklets/Booklet Penginapan - Angel.pdf",
-      poster: '/images/booklets/Booklet Penginapan - Angel.png',
-    },
-    {
-      title: "Tanaman Kehutanan di Pulau Tidung",
-      description: "Kenali keanekaragaman tanaman kehutanan yang ada di Pulau Tidung",
-      author: "Salwa Hanifah",
-      pages: "9 halaman",
-      format: "PDF",
-      size: "21 MB",
-      url: "/booklets/Poster Tanaman Kehutanan di Pulau Tidung-Salwa.pdf",
-      previewUrl: "/booklets/Poster Tanaman Kehutanan di Pulau Tidung-Salwa.pdf",
-      poster:
-      '/images/booklets/Poster Tanaman Kehutanan di Pulau Tidung-Salwa.png',
-    },
-    {
-      title: "Visit Tidung Kecil",
-      description: "Potensi wisata bahari dengan daya tarik utama keindahan alam dan biota bawah laut yang menakjubkan",
-      author: "Nisrina Aulia",
-      pages: "2 halaman",
-      format: "Leaflet PDF",
-      size: "6 KB",
-      url: "/booklets/Leaflet Tidung Kecil - Nisrina.pdf",
-      previewUrl: "/booklets/Leaflet Tidung Kecil - Nisrina.pdf",
-      poster: '/images/booklets/Leaflet Tidung Kecil - Nisrina.png',
-    }
-  ];
+  const featuredBooklets = booklets.slice(0, 5);
 
   return (
     <section 
@@ -204,7 +147,7 @@ function BookletSection() {
             }}
             className="mySwiper pb-12"
           >
-            {booklets.map((booklet, index) => (
+            {featuredBooklets.map((booklet, index) => (
               <SwiperSlide key={index}>
                 <div className="bg-white my-4 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1 h-full flex flex-col">
                   <div className="p-6 text-center">
@@ -240,7 +183,7 @@ function BookletSection() {
                     style={{ height: previewHeight }}
                   >
                     <iframe 
-                      src={`${booklet.previewUrl}#view=fitH`} 
+                      src={`${booklet.url}#view=fitH`} 
                       className="w-full h-full hidden xl:block"
                       frameBorder="0"
                       loading="lazy"
@@ -269,7 +212,7 @@ function BookletSection() {
                   
                   <div className="p-4 bg-gray-50 flex gap-2">
                     <a 
-                      href={booklet.previewUrl} 
+                      href={booklet.url} 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 inline-flex items-center justify-center px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors"
