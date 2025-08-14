@@ -70,7 +70,7 @@ export default function VideoSection() {
           <video
             ref={videoRef}
             playsInline
-            className="w-full h-full object-cover rounded-sm"
+            className="w-full h-full rounded-sm"
             poster="/images/poster-video-promosi-pulau-tidung.png"
           >
             <source src="/videos/promosi-pulau-tidung.mp4" type="video/mp4" />

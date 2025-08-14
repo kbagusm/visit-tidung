@@ -73,7 +73,7 @@ export default function VideoTidungKecilSection() {
             <video
               ref={videoRef}
               playsInline
-              className="object-cover w-full h-full rounded-sm"
+              className="w-full h-full rounded-sm"
               poster="/images/poster-video-promosi-pulau-tidung-kecil.png"
             >
               <source
