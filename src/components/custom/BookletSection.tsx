@@ -82,7 +82,8 @@ function BookletSection() {
       format: "PDF",
       size: "13.8 MB",
       url: "/booklets/Booklet GEMARIKAN-Riski.pdf",
-      previewUrl: "/booklets/Booklet GEMARIKAN-Riski.pdf"
+      previewUrl: "/booklets/Booklet GEMARIKAN-Riski.pdf",
+      poster: '/images/booklets/Booklet GEMARIKAN-Riski.png',
     },
     {
       title: "Edutourism Guide",
@@ -92,7 +93,8 @@ function BookletSection() {
       format: "PDF",
       size: "6.4 MB",
       url: "/booklets/Booklet Edutourism Guide - Alisha.pdf",
-      previewUrl: "/booklets/Booklet Edutourism Guide - Alisha.pdf"
+      previewUrl: "/booklets/Booklet Edutourism Guide - Alisha.pdf",
+      poster: '/images/booklets/Booklet Edutourism Guide - Alisha.png',
     },
     {
       title: "Book n Stay RW Satu",
@@ -102,7 +104,8 @@ function BookletSection() {
       format: "PDF",
       size: "13.3 MB",
       url: "/booklets/Booklet Penginapan - Angel.pdf",
-      previewUrl: "/booklets/Booklet Penginapan - Angel.pdf"
+      previewUrl: "/booklets/Booklet Penginapan - Angel.pdf",
+      poster: '/images/booklets/Booklet Penginapan - Angel.png',
     },
     {
       title: "Tanaman Kehutanan di Pulau Tidung",
@@ -112,7 +115,9 @@ function BookletSection() {
       format: "PDF",
       size: "21 MB",
       url: "/booklets/Poster Tanaman Kehutanan di Pulau Tidung-Salwa.pdf",
-      previewUrl: "/booklets/Poster Tanaman Kehutanan di Pulau Tidung-Salwa.pdf"
+      previewUrl: "/booklets/Poster Tanaman Kehutanan di Pulau Tidung-Salwa.pdf",
+      poster:
+      '/images/booklets/Poster Tanaman Kehutanan di Pulau Tidung-Salwa.png',
     },
     {
       title: "Visit Tidung Kecil",
@@ -122,7 +127,8 @@ function BookletSection() {
       format: "Leaflet PDF",
       size: "6 KB",
       url: "/booklets/Leaflet Tidung Kecil - Nisrina.pdf",
-      previewUrl: "/booklets/Leaflet Tidung Kecil - Nisrina.pdf"
+      previewUrl: "/booklets/Leaflet Tidung Kecil - Nisrina.pdf",
+      poster: '/images/booklets/Leaflet Tidung Kecil - Nisrina.png',
     }
   ];
 
@@ -200,7 +206,7 @@ function BookletSection() {
           >
             {booklets.map((booklet, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1 h-full flex flex-col">
+                <div className="bg-white my-4 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-1 h-full flex flex-col">
                   <div className="p-6 text-center">
                     <div className="bg-blue-100 rounded-full p-3 inline-block mb-4">
                       <FileText className="h-10 w-10 text-blue-600" />
@@ -235,13 +241,30 @@ function BookletSection() {
                   >
                     <iframe 
                       src={`${booklet.previewUrl}#view=fitH`} 
-                      className="w-full h-full"
+                      className="w-full h-full hidden xl:block"
                       frameBorder="0"
                       loading="lazy"
                     >
                       <p>Browser Anda tidak mendukung pratinjau PDF. Silakan <a href={booklet.url}>download file</a> untuk melihat.</p>
                     </iframe>
-                    <div className="absolute bottom-0 left-0 right-0 h-15 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+
+                    <div className='block xl:hidden w-full h-full'>
+
+                    <img
+                      src={booklet.poster}
+                      alt={`Cover ${booklet.title}`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-4">
+                      <div className="w-full flex justify-center items-center">
+                        <h3 className="text-5xl font-[karimun] text-center text-white z-10">
+                          {booklet.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 h-15 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+                    </div>
+
                   </div>
                   
                   <div className="p-4 bg-gray-50 flex gap-2">
@@ -269,13 +292,13 @@ function BookletSection() {
           </Swiper>
 
           {/* Custom Navigation */}
-          <button className="booklets-prev absolute top-1/2 -left-4 transform -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md hidden md:flex items-center justify-center hover:bg-gray-100 transition-colors">
+          <button className="booklets-prev absolute top-1/2 -left-4 transform -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           
-          <button className="booklets-next absolute top-1/2 -right-4 transform -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md items-center justify-center hover:bg-gray-100 transition-colors hidden md:flex">
+          <button className="booklets-next absolute top-1/2 -right-4 transform -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md items-center justify-center hover:bg-gray-100 transition-colors flex">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

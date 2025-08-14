@@ -93,7 +93,7 @@ function MapsSection() {
         <div className="flex justify-center mt-6">
           <a
             href="/maps"
-            className="inline-block px-6 py-3 mx-auto bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 hover:from-blue-600 hover:via-cyan-500 hover:to-green-500 text-white font-semibold rounded-lg transition-all duration-200 group shadow-lg"
           >
             Lihat Peta
           </a>

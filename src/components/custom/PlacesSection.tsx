@@ -1,7 +1,12 @@
 import type { CollectionEntry } from 'astro:content';
 import SectionHeading from './SectionHeading';
 import SectionSubHeading from './SectionSubHeading';
-import { ArrowRight, MapPin, Mountain, Users } from 'lucide-react';
+import {
+  ArrowRight,
+  Mountain,
+  Sunset,
+  Umbrella,
+} from 'lucide-react';
 
 type Props = {
   places: CollectionEntry<'places'>[];
@@ -24,9 +29,7 @@ function PlacesSection({ places }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {places.map((place, index) => (
             <a href={`/places/${place.id}`} key={index}>
-              <div
-                className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300"
-              >
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
                 <div className="h-64 relative overflow-hidden">
                   <img
                     src={place.data.featuredImage.src}
@@ -36,7 +39,15 @@ function PlacesSection({ places }: Props) {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-3">
-                    <Mountain className="w-5 h-5 text-blue-600 mr-2" />
+                    {place.data.title === 'Jembatan Cinta' ? (
+                      <Mountain className="w-5 h-5 text-blue-600 mr-2" />
+                    ) : place.data.title === 'Pulau Payung' ? (
+                      <Umbrella className="w-5 h-5 text-blue-600 mr-2" />
+                    ) : place.data.title === 'Saung Sunset' ? (
+                      <Sunset className="w-5 h-5 text-blue-600 mr-2" />
+                    ) : (
+                      <Mountain className="w-5 h-5 text-blue-600 mr-2" />
+                    )}
                     <h3 className="text-xl font-bold text-gray-900">
                       {place.data.title}
                     </h3>
