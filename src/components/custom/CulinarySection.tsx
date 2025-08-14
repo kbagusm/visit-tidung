@@ -37,7 +37,7 @@ function CulinarySection({ traditionalFoods }: Props) {
     <section
       id="culinary-section"
       ref={sectionRef}
-      className="py-10 px-4 bg-white transform opacity-0 translate-y-10 transition-all duration-500"
+      className="py-10 px-4 bg-gradient-to-r from-slate-50 to-blue-50 transform opacity-0 translate-y-10 transition-all duration-500"
     >
       <div className="max-w-4xl mx-auto">
         <SectionHeading>Kuliner Khas</SectionHeading>

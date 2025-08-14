@@ -45,7 +45,7 @@ function ArticleSection({ articles }: Props) {
     <section
       id="articles"
       ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-cyan-50 to-blue-50 opacity-0 transform translate-y-10 transition-all duration-500"
+      className="py-20 bg-white opacity-0 transform translate-y-10 transition-all duration-500"
     >
       <div className="container mx-auto px-4">
         <div

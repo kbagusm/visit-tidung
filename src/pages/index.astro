@@ -9,6 +9,7 @@ import ArticleSection from '@/components/custom/ArticleSection';
 import BookletSection from '@/components/custom/BookletSection';
 import PlacesSection from '@/components/custom/PlacesSection';
 import VideoSection from '@/components/custom/VideoSection';
+import VideoTidungKecilSection from '@/components/custom/VideoTidungKecilSection';
 
 // Ambil data tempat wisata
 const places = await getCollection('places');
@@ -67,6 +68,8 @@ const featuredArticles = articles.slice(0, 5);
 
     <!-- <PlacesSection client:load /> -->
     <PlacesSection client:load places={featuredPlaces} />
+
+    <VideoTidungKecilSection client:load />
 
     <!-- Culinary Section -->
     <CulinarySection client:load traditionalFoods={featuredTraditionalFoods} />

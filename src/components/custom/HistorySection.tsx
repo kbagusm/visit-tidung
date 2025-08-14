@@ -35,7 +35,7 @@ function HistorySection() {
     <section
       id="history"
       ref={sectionRef}
-      className="py-10 px-4 bg-gradient-to-r from-slate-50 to-blue-50 opacity-0 transform translate-y-10 transition-all duration-500"
+      className="py-10 px-4 bg-white opacity-0 transform translate-y-10 transition-all duration-500"
     >
       <div className="container mx-auto max-w-6xl">
         <SectionHeading>Sejarah dan Budaya Pulau Tidung</SectionHeading>

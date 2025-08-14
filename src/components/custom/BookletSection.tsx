@@ -79,7 +79,7 @@ function BookletSection() {
     <section 
       id="booklets"
       ref={sectionRef}
-      className="py-20 bg-white/80 opacity-0 transform translate-y-10 transition-all duration-500"
+      className="py-20 bg-gradient-to-br from-cyan-50 to-blue-50 transform translate-y-10 transition-all duration-500"
     >
       <div className="container mx-auto px-4">
         <div ref={containerRef} className="text-center mb-16 opacity-0 transform translate-y-10 transition-all duration-500">
