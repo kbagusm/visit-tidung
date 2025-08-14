@@ -99,21 +99,23 @@ export default function MobileMenu() {
                   )}
                 </div>
               );
-            } else if (menu.scrollTarget) {
-              return (
-                <a
-                  key={menu.title}
-                  href={`#${menu.scrollTarget}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(menu.scrollTarget!);
-                  }}
-                  className="font-[Karimun] text-2xl py-2 hover:text-blue-600 transition-colors"
-                >
-                  {menu.title}
-                </a>
-              );
-            } else {
+            } 
+            // else if (menu.scrollTarget) {
+            //   return (
+            //     <a
+            //       key={menu.title}
+            //       href={`#${menu.scrollTarget}`}
+            //       onClick={(e) => {
+            //         e.preventDefault();
+            //         scrollToSection(menu.scrollTarget!);
+            //       }}
+            //       className="font-[Karimun] text-2xl py-2 hover:text-blue-600 transition-colors"
+            //     >
+            //       {menu.title}
+            //     </a>
+            //   );
+            // } 
+            else {
               return (
                 <a
                   key={menu.title}

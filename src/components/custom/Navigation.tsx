@@ -40,26 +40,19 @@ function Navigation() {
           onMouseEnter={() => menu.dropdownItems && setOpenDropdown(menu.title)}
           onMouseLeave={() => menu.dropdownItems && setOpenDropdown(null)}
         >
-          {menu.scrollTarget ? (
-            <a
-              href={`#${menu.scrollTarget}`}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection(menu.scrollTarget!);
-                setOpenDropdown(null);
-              }}
-              className="navigation-menu-link py-3 px-4 text-2xl font-[Karimun] transition-colors duration-300 hover:text-accent focus:outline-none whitespace-nowrap"
-            >
-              {menu.title}
-            </a>
-          ) : (
-            <a
-              href={menu.href}
-              className="navigation-menu-link py-3 px-4 text-2xl font-[Karimun] transition-colors duration-300 hover:text-accent focus:outline-none whitespace-nowrap"
-            >
-              {menu.title}
-            </a>
-          )}
+          
+          <a
+            href={`${menu.href}`}
+            onClick={(e) => {
+              // e.preventDefault();
+              // scrollToSection(menu.scrollTarget!);
+              setOpenDropdown(null);
+            }}
+            className="navigation-menu-link py-3 px-4 text-2xl font-[Karimun] transition-colors duration-300 hover:text-accent focus:outline-none whitespace-nowrap"
+          >
+            {menu.title}
+          </a>
+          
 
           {/* Dropdown untuk menu dengan dropdownItems */}
           {menu.dropdownItems && openDropdown === menu.title && (

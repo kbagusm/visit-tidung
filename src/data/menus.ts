@@ -38,6 +38,7 @@ export const menus: Menu[] = [
   },
   {
     title: "Artikel",
+    href: '/articles',
     scrollTarget: "articles",
     dropdownItems: [
       { 
