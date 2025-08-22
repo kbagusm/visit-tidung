@@ -1,21 +1,12 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import SectionHeading from './SectionHeading';
 import SectionSubHeading from './SectionSubHeading';
 
 export default function VideoSection() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const videoRef = useRef<HTMLIFrameElement | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      videoRef.current.setAttribute('controls', 'true');
-      setIsPlaying(true);
-    }
-  };
 
   useEffect(() => {
     const observerOptions = {
@@ -51,8 +42,10 @@ export default function VideoSection() {
 
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
-      if (videoContainerRef.current) observer.unobserve(videoContainerRef.current);
-      if (textContainerRef.current) observer.unobserve(textContainerRef.current);
+      if (videoContainerRef.current)
+        observer.unobserve(videoContainerRef.current);
+      if (textContainerRef.current)
+        observer.unobserve(textContainerRef.current);
     };
   }, []);
 
@@ -65,33 +58,17 @@ export default function VideoSection() {
       <div className="max-w-7xl mx-auto relative grid md:grid-cols-2 md:gap-8">
         <div
           ref={videoContainerRef}
-          className="relative opacity-0 transform transition-all duration-500"
+          className="relative opacity-0 transform transition-all duration-500 rounded-sm overflow-hidden"
         >
-          <video
+          <iframe
             ref={videoRef}
-            playsInline
-            className="w-full h-full rounded-sm"
-            poster="/images/poster-video-promosi-pulau-tidung.png"
-          >
-            <source src="/videos/promosi-pulau-tidung.mp4" type="video/mp4" />
-          </video>
-
-          {!isPlaying && (
-            <button
-              type="button"
-              onClick={handlePlay}
-              className="absolute rounded-sm inset-0 flex items-center justify-center bg-black/40 hover:bg-black/50 transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-white"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </button>
-          )}
+            src="https://www.youtube.com/embed/uPcuEAdI-qw?si=PaxPTwByrJQ_n2Gq"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="aspect-video"
+          ></iframe>
         </div>
 
         <div
@@ -99,10 +76,10 @@ export default function VideoSection() {
           className="h-full flex justify-center items-center order-first opacity-0 transform transition-all duration-500"
         >
           <div className="text-start">
-            <SectionHeading className='md:text-start'>
+            <SectionHeading className="md:text-start">
               Intip Keindahan <br /> Pulau Tidung
             </SectionHeading>
-            <SectionSubHeading className='md:text-start'>
+            <SectionSubHeading className="md:text-start">
               Biarkan pesonanya berbicara lewat video singkat ini
             </SectionSubHeading>
           </div>
