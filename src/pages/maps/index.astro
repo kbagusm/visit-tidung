@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Map from '@/components/custom/Map';
@@ -23,3 +24,47 @@ const lodgings = await getCollection('lodgings');
     <Map client:only culinary={culinary} lodgings={lodgings} />
   </section>
 </BaseLayout>
+=======
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Map from '@/components/custom/Map';
+import { getCollection } from 'astro:content';
+import PageHeading from '@/components/custom/PageHeading';
+import PageSubHeading from '@/components/custom/PageSubHeading';
+import { bookletsCulinaryAndLodgings } from '@/data/booklets';
+import BookletCard from '@/components/custom/BookletCard';
+
+const pageTitle = 'Peta Pulau Tidung';
+
+const culinary = await getCollection('culinary');
+const lodgings = await getCollection('lodgings');
+---
+
+<BaseLayout {pageTitle}>
+  <section class="bg-gradient-to-br from-cyan-50 to-blue-50 px-3 py-16">
+    <div class="text-center mb-16">
+      <PageHeading>Peta Interaktif Pulau Tidung</PageHeading>
+      <PageSubHeading
+        >Temukan lokasi kuliner UMKM dan penginapan di Pulau Tidung</PageSubHeading
+      >
+    </div>
+
+    <Map client:only culinary={culinary} lodgings={lodgings} />
+
+    <h2 class="text-4xl font-[Karimun] text-primary text-center mt-28 mb-2">
+      Tertarik untuk Mempelajari UMKM Kuliner dan Penginapan Lebih Lanjut<span class="font-sans font-bold text-2xl">?</span>
+    </h2>
+    <PageSubHeading>
+      Temukan informasi lengkap mengenai UMKM kuliner dan penginapan di
+      Pulau Tidung melalui booklet ini
+    </PageSubHeading>
+    <div class="max-w-4xl grid sm:grid-cols-2 mx-auto gap-8 px-2">
+      {
+        bookletsCulinaryAndLodgings.map((booklet) => (
+          <BookletCard booklet={booklet} />
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+>>>>>>> main
