@@ -1,30 +1,3 @@
-<<<<<<< HEAD
----
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Map from '@/components/custom/Map';
-import { getCollection } from 'astro:content';
-import PageHeading from '@/components/custom/PageHeading';
-import PageSubHeading from '@/components/custom/PageSubHeading';
-
-const pageTitle = 'Peta Pulau Tidung';
-
-const culinary = await getCollection('culinary');
-const lodgings = await getCollection('lodgings');
----
-
-<BaseLayout {pageTitle}>
-  <section class="bg-gradient-to-br from-cyan-50 to-blue-50 px-3 py-16">
-    <div class="text-center mb-16">
-      <PageHeading>Peta Interaktif Pulau Tidung</PageHeading>
-      <PageSubHeading
-        >Temukan lokasi kuliner UMKM dan penginapan di Pulau Tidung</PageSubHeading
-      >
-    </div>
-
-    <Map client:only culinary={culinary} lodgings={lodgings} />
-  </section>
-</BaseLayout>
-=======
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Map from '@/components/custom/Map';
@@ -67,4 +40,3 @@ const lodgings = await getCollection('lodgings');
     </div>
   </section>
 </BaseLayout>
->>>>>>> main
